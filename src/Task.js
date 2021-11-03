@@ -5,6 +5,9 @@ class Task {
     getName(){
         return this.name;
     }
+    setTask(newName){
+        return this.name = newName; 
+    }
 }
 
 export {Task}

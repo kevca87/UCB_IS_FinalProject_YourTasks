@@ -1,4 +1,5 @@
 import {ToDoList} from "./ToDoList"
+import {Task} from "./Task"
 
 /*var toDoList = new ToDoList();
 toDoList.add("Entrada1");
@@ -20,5 +21,15 @@ describe("Test", () => {
   });
   it("Deberia agregar otro elemento conservando los anteriores", () => {
     expect(toDoList.getToDoList().length).toEqual(2);
+  });
+});
+
+describe("Edit", () => {
+  var task = new Task("Entada1");
+  it("Deberia devolver un array de lenght 0", () => {
+    expect(task.setTask("")).toEqual("");
+  });
+  it("Deberia devolver un array de lenght 0", () => {
+    expect(task.setTask("Entada2")).toEqual("Entada2");
   });
 });
