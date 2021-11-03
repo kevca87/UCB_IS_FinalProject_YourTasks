@@ -19,6 +19,11 @@ class ToDoList {
         var newTask = new Task(newTaskName);
         this.tasksList.push(newTask);
     }
+
+    removeTask(taskToDelete){
+        var i = this.tasksList.indexOf( taskToDelete );
+        this.tasksList.splice( i, 1 );
+    }
 };
 export {ToDoList}
   

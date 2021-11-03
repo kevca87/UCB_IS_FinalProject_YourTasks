@@ -21,4 +21,8 @@ describe("Test", () => {
   it("Deberia agregar otro elemento conservando los anteriores", () => {
     expect(toDoList.getToDoList().length).toEqual(2);
   });
+  it("Deberia eliminar un elemento de la lista", () => {
+    toDoList.removeTask("Entrada2");
+    expect(toDoList.getToDoList()).toEqual(["Entrada1"]);
+  });
 });
