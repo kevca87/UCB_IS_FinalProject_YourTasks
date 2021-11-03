@@ -1,4 +1,4 @@
-import {ToDoList} from "./ToDoList"
+import {ToDoList} from "./ToDoList.js"
 
 /*var toDoList = new ToDoList();
 toDoList.add("Entrada1");
