@@ -66,4 +66,5 @@ describe("Search task from a list", () => {
     task = toDoList.searchByName("Entrada3")
     expect(task.getName()).toEqual("Entrada3");
    });
+
 });
