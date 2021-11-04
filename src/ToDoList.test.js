@@ -22,7 +22,11 @@ describe("Test", () => {
     expect(toDoList.getToDoList().length).toEqual(2);
   });
   it("Deberia eliminar un elemento de la lista", () => {
-    toDoList.removeTask("Entrada2");
-    expect(toDoList.getToDoList()).toEqual(["Entrada1"]);
+    toDoList.removeTask("Entrada1");
+    expect(toDoList.getToDoList()).toEqual(["Entrada2"]);
+  });
+  it("Deberia eliminar un elemento de la lista", () => {
+    toDoList.removeTask("");
+    expect(toDoList.getToDoList()).toEqual(["Entrada2"]);
   });
 });

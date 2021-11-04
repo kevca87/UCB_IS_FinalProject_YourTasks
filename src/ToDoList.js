@@ -1,6 +1,7 @@
 import {Task} from "./Task"
 
 class ToDoList {
+
     constructor() {
       this.tasksList = [];
     }
@@ -21,8 +22,11 @@ class ToDoList {
     }
 
     removeTask(taskToDelete){
-        var i = this.tasksList.indexOf( taskToDelete );
-        this.tasksList.splice( i, 1 );
+        for(var i =0; i < this.tasksList.length; i++) {
+            if(this.tasksList[i].getName() === taskToDelete) {
+               this.tasksList.splice(i, 1);
+            }
+        }
     }
 };
 export {ToDoList}
