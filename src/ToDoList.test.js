@@ -51,5 +51,13 @@ describe("Search task from a list", () => {
   it("Deberia devolver Entrada3", () => {
     task = toDoList.searchByName("Entrada3")
     expect(task.getName()).toEqual("Entrada3");
+   });
+  it("Deberia eliminar un elemento de la lista", () => {
+    toDoList.removeTask("Entrada1");
+    expect(toDoList.getToDoList()).toEqual(["Entrada2"]);
+  });
+  it("Deberia eliminar un elemento de la lista", () => {
+    toDoList.removeTask("");
+    expect(toDoList.getToDoList()).toEqual(["Entrada2"]);
   });
 });

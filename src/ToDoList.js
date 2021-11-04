@@ -1,6 +1,7 @@
-import {Task} from "./Task"
+import {Task} from "./Task.js"
 
 class ToDoList {
+
     constructor() {
       this.tasksList = [];
     }
@@ -20,12 +21,21 @@ class ToDoList {
         this.tasksList.push(newTask);
         //['entra1','entra2','entra2'] - ['entra1','entra3','entra2']
     }
+
     searchByName(name){
 	    for(var i=0; i<this.tasksList.length; i++)
 	    {
 		    if(this.tasksList[i].getName() == name) return this.tasksList[i];
 	    }
 	    return;
+    }
+
+    removeTask(taskToDelete){
+        for(var i =0; i < this.tasksList.length; i++) {
+            if(this.tasksList[i].getName() === taskToDelete) {
+               this.tasksList.splice(i, 1);
+            }
+        }
     }
 };
 export {ToDoList}
