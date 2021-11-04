@@ -40,6 +40,20 @@ describe("Search task from a list", () => {
   var toDoList = new ToDoList()
   toDoList.add("Entrada1");
   toDoList.add("Entrada2");
+  it("Deberia eliminar un elemento de la lista", () => {
+    toDoList.removeTask("Entrada1");
+    expect(toDoList.getToDoList()).toEqual(["Entrada2"]);
+  });
+  it("Deberia eliminar un elemento de la lista", () => {
+    toDoList.removeTask("");
+    expect(toDoList.getToDoList()).toEqual(["Entrada2"]);
+  });
+});
+
+describe("Search task from a list", () => {
+  var toDoList = new ToDoList()
+  toDoList.add("Entrada1");
+  toDoList.add("Entrada2");
   toDoList.add("Entrada3");
   it("Deberia devolver undefined", () => {
     expect(toDoList.searchByName()).toEqual();
@@ -52,12 +66,4 @@ describe("Search task from a list", () => {
     task = toDoList.searchByName("Entrada3")
     expect(task.getName()).toEqual("Entrada3");
    });
-  it("Deberia eliminar un elemento de la lista", () => {
-    toDoList.removeTask("Entrada1");
-    expect(toDoList.getToDoList()).toEqual(["Entrada2"]);
-  });
-  it("Deberia eliminar un elemento de la lista", () => {
-    toDoList.removeTask("");
-    expect(toDoList.getToDoList()).toEqual(["Entrada2"]);
-  });
 });
