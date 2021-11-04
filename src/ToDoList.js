@@ -16,10 +16,18 @@ class ToDoList {
         return taskNamesLists;
     }
 
-    add(newTaskName){
+    add(newTaskName,descript){
         var newTask = new Task(newTaskName);
         this.tasksList.push(newTask);
         //['entra1','entra2','entra2'] - ['entra1','entra3','entra2']
+    }
+
+    searchByName(name){
+	    for(var i=0; i<this.tasksList.length; i++)
+	    {
+		    if(this.tasksList[i].getName() == name) return this.tasksList[i];
+	    }
+	    return;
     }
 
     removeTask(taskToDelete){
