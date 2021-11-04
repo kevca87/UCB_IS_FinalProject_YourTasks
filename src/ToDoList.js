@@ -15,7 +15,7 @@ class ToDoList {
         return taskNamesLists;
     }
 
-    add(newTaskName,descript){
+    add(newTaskName){
         var newTask = new Task(newTaskName);
         this.tasksList.push(newTask);
         //['entra1','entra2','entra2'] - ['entra1','entra3','entra2']
