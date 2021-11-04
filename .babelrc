@@ -1,7 +1,3 @@
 {
-<<<<<<< HEAD
   "presets": ["@babel/preset-env"]
-=======
-  "presets": ["@parcel/babel-preset-env"]
->>>>>>> 126d172166d30e4d3bd0966452dffbc2716e6062
 }

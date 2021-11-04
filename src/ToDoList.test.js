@@ -1,13 +1,11 @@
-<<<<<<< HEAD
 import {ToDoList} from "./ToDoList"
 import {Task} from "./Task"
-=======
-import {ToDoList} from "./ToDoList.js"
->>>>>>> 126d172166d30e4d3bd0966452dffbc2716e6062
 
 /*var toDoList = new ToDoList();
 toDoList.add("Entrada1");
 console.log(toDoList.getToDoList());*/
+
+let task;
 
 describe("Test", () => {
   var toDoList = new ToDoList();
@@ -28,12 +26,30 @@ describe("Test", () => {
   });
 });
 
-describe("Edit", () => {
-  var task = new Task("Entada1");
-  it("Deberia devolver un array de lenght 0", () => {
-    expect(task.setTask("")).toEqual("");
+describe("Edit task", () => {
+  task = new Task("Entada1");
+  it("Deberia devolver undefined", () => {
+    expect(task.setTask()).toEqual();
   });
-  it("Deberia devolver un array de lenght 0", () => {
+  it("Deberia devolver Entrada2", () => {
     expect(task.setTask("Entada2")).toEqual("Entada2");
+  });
+});
+
+describe("Search task from a list", () => {
+  var toDoList = new ToDoList()
+  toDoList.add("Entrada1");
+  toDoList.add("Entrada2");
+  toDoList.add("Entrada3");
+  it("Deberia devolver undefined", () => {
+    expect(toDoList.searchByName()).toEqual();
+  });
+  it("Deberia devolver Entrada1", () => {
+    task = toDoList.searchByName("Entrada1")
+    expect(task.getName()).toEqual("Entrada1");
+  });
+  it("Deberia devolver Entrada3", () => {
+    task = toDoList.searchByName("Entrada3")
+    expect(task.getName()).toEqual("Entrada3");
   });
 });

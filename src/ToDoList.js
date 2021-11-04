@@ -1,4 +1,4 @@
-import {Task} from "./Task.js"
+import {Task} from "./Task"
 
 class ToDoList {
     constructor() {
@@ -19,6 +19,13 @@ class ToDoList {
         var newTask = new Task(newTaskName);
         this.tasksList.push(newTask);
         //['entra1','entra2','entra2'] - ['entra1','entra3','entra2']
+    }
+    searchByName(name){
+	    for(var i=0; i<this.tasksList.length; i++)
+	    {
+		    if(this.tasksList[i].getName() == name) return this.tasksList[i];
+	    }
+	    return;
     }
 };
 export {ToDoList}
