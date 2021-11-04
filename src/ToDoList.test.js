@@ -1,5 +1,9 @@
+<<<<<<< HEAD
 import {ToDoList} from "./ToDoList"
 import {Task} from "./Task"
+=======
+import {ToDoList} from "./ToDoList.js"
+>>>>>>> 126d172166d30e4d3bd0966452dffbc2716e6062
 
 /*var toDoList = new ToDoList();
 toDoList.add("Entrada1");

@@ -2,4 +2,8 @@ node_modules
 .cache
 dist
 .parcel-cache
+<<<<<<< HEAD
 coverage/
+=======
+coverage/
+>>>>>>> 126d172166d30e4d3bd0966452dffbc2716e6062
