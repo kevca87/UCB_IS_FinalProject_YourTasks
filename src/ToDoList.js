@@ -1,4 +1,4 @@
-import {Task} from "./Task"
+import {Task} from "./Task.js"
 
 class ToDoList {
 
@@ -16,9 +16,10 @@ class ToDoList {
         return taskNamesLists;
     }
 
-    add(newTaskName){
+    add(newTaskName,descript){
         var newTask = new Task(newTaskName);
         this.tasksList.push(newTask);
+        //['entra1','entra2','entra2'] - ['entra1','entra3','entra2']
     }
 
     removeTask(taskToDelete){
@@ -30,4 +31,3 @@ class ToDoList {
     }
 };
 export {ToDoList}
-  

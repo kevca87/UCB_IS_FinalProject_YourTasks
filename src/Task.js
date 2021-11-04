@@ -1,5 +1,6 @@
 class Task {
     constructor(name) {
+
         this.name = name;
     }
     getName(){
