@@ -14,6 +14,5 @@ form.addEventListener("submit",event=>{
     todo_list.getToDoList().forEach(element => {
         task_list = task_list + ("<li>" + element + "</li>");
     });
-    console.log(task_list);
     taskListOutput.innerHTML =  task_list;
 })

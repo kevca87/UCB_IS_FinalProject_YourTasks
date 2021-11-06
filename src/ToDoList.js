@@ -17,8 +17,13 @@ class ToDoList {
     }
 
     add(newTaskName,descript){
-        var newTask = new Task(newTaskName);
-        this.tasksList.push(newTask);
+        let wordsExpression = new RegExp('\\w+');
+        var hasNotOnlySpaces = newTaskName.match(wordsExpression) != null;
+        if(newTaskName !="" && hasNotOnlySpaces)
+        {
+            var newTask = new Task(newTaskName);
+            this.tasksList.push(newTask);
+        }
         //['entra1','entra2','entra2'] - ['entra1','entra3','entra2']
     }
 

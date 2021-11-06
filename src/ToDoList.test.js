@@ -18,12 +18,21 @@ describe("Test", () => {
   });
   it("Deberia agregar otro elemento conservando los anteriores", () => {
     toDoList.add("Entrada2");
-    console.log(toDoList.getToDoList())
     expect(toDoList.getToDoList()).toEqual(["Entrada1","Entrada2"]);
   });
   it("Deberia agregar otro elemento conservando los anteriores", () => {
     expect(toDoList.getToDoList().length).toEqual(2);
   });
+  it("No deberia agregar ningun  elemento", () => {
+    toDoList.add("");
+    expect(toDoList.getToDoList()).toEqual(["Entrada1","Entrada2"]);
+  });
+  it("No deberia agregar ningun  elemento (espacios)", () => {
+    toDoList.add(" ");
+    toDoList.add("  ");
+    expect(toDoList.getToDoList()).toEqual(["Entrada1","Entrada2"]);
+  });
+  
 });
 
 describe("Edit task", () => {
@@ -66,5 +75,4 @@ describe("Search task from a list", () => {
     task = toDoList.searchByName("Entrada3")
     expect(task.getName()).toEqual("Entrada3");
    });
-
 });
