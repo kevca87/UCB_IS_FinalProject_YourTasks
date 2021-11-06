@@ -1,7 +1,7 @@
 class Task {
-    constructor(name) {
-
+    constructor(name,description) {
         this.name = name;
+        this.description = description
     }
     getName(){
         return this.name;
@@ -9,6 +9,10 @@ class Task {
     setTask(newName){
         return this.name = newName; 
     }
+    getDescription(){
+        return this.description;
+    }
+
 }
 
 export {Task}

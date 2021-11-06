@@ -76,3 +76,20 @@ describe("Search task from a list", () => {
     expect(task.getName()).toEqual("Entrada3");
    });
 });
+
+describe("Add description to the tasks", () => {
+  var toDoList = new ToDoList()
+  toDoList.add("Entrada1", "desc 1");
+  toDoList.add("Entrada2", "desc 2");
+  toDoList.add("Entrada3", "");
+  toDoList.add("Entrada4", "desc 4");
+  it("Ingresar una tarea que tenga una descripcion", () => {
+    expect(toDoList.searchByName("Entrada1").getDescription()).toEqual("desc 1");
+  });
+  it("Se debe perimitir añadir una tarea sin descripcion", () => {
+    expect(toDoList.searchByName("Entrada3").getDescription()).toEqual("");
+  });
+  it("Ingresar una tarea que tenga una descripcion", () => {
+    expect(toDoList.searchByName("Entrada4").getDescription()).toEqual("desc 4");
+  });
+});

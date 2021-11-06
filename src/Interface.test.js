@@ -23,7 +23,7 @@ describe("Interfaz", () => {
         task.value = "Primera tarea";
         button.click();
         expect(taskListOutput.innerHTML).toEqual("<li>Primera tarea</li>");
-      });
+    });
 
     /*
     it("Al iniciar no hay nada en la lista de tareas", () => {
