@@ -103,10 +103,15 @@ describe("Add description to the tasks", () => {
       toDoList.editTaskInTasksList();
       expect(toDoList.getToDoList()).toEqual(["Entrada1", "Entrada2", "Entrada3"]);
     });
-    it("Deberia devolver la tarea Entrada1 modificado los datos de la tarea task.", () => {
+    it("Deberia editar la tarea Entrada1 con los datos de la tarea task.", () => {
       task = new Task("Editar entrada1", "Editar des1");
       toDoList.editTaskInTasksList("Entrada1", task)
       expect(toDoList.getToDoList()).toEqual(["Editar entrada1", "Entrada2", "Entrada3"]);
+    });
+    it("Deberia editar la tarea Entrada3 con los datos de la tarea task.", () => {
+      task = new Task("Editar entrada3", "Editar des3");
+      toDoList.editTaskInTasksList("Entrada3", task)
+      expect(toDoList.getToDoList()).toEqual(["Editar entrada1", "Entrada2", "Editar entrada3"]);
     });
   });
 });

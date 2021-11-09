@@ -39,7 +39,10 @@ class ToDoList {
     }
 
     editTaskInTasksList(taskToEdit, newTask){
-        if(taskToEdit) this.tasksList[0].setTask(newTask.getName(), newTask.getDescription());
+        for(var i=0; i<this.tasksList.length; i++)
+	    {
+		    if(this.tasksList[i].getName() == taskToEdit) return this.tasksList[i].setTask(newTask.getName(), newTask.getDescription());
+	    }
     }
 };
 export {ToDoList}
