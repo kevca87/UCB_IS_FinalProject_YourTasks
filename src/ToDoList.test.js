@@ -5,8 +5,6 @@ import {Task} from "./Task"
 toDoList.add("Entrada1");
 console.log(toDoList.getToDoList());*/
 
-let task;
-
 describe("Test", () => {
   var toDoList = new ToDoList();
   it("Deberia devolver un array de lenght 0", () => {
@@ -36,12 +34,13 @@ describe("Test", () => {
 });
 
 describe("Edit task", () => {
-  task = new Task("Entada1");
+  var task = new Task("Entada1");
   it("Deberia devolver undefined", () => {
     expect(task.setTask()).toEqual();
   });
   it("Deberia devolver Entrada2", () => {
-    expect(task.setTask("Entada2")).toEqual("Entada2");
+    task.setTask("Entada2")
+    expect(task.getName()).toEqual("Entada2");
   });
 });
 
@@ -64,6 +63,7 @@ describe("Search task from a list", () => {
   toDoList.add("Entrada1");
   toDoList.add("Entrada2");
   toDoList.add("Entrada3");
+  var task;
   it("Deberia devolver undefined", () => {
     expect(toDoList.searchByName()).toEqual();
   });
@@ -98,9 +98,15 @@ describe("Add description to the tasks", () => {
     toDoList.add("Entrada1", "desc1");
     toDoList.add("Entrada2", "desc2");
     toDoList.add("Entrada3", "desc3");
+    var task;
     it("Deberia devolver la lista sin ninguna modificacion", () => {
       toDoList.editTaskInTasksList();
       expect(toDoList.getToDoList()).toEqual(["Entrada1", "Entrada2", "Entrada3"]);
+    });
+    it("Deberia devolver la tarea Entrada1 modificado los datos de la tarea task.", () => {
+      task = new Task("Editar entrada1", "Editar des1");
+      toDoList.editTaskInTasksList("Entrada1", task)
+      expect(toDoList.getToDoList()).toEqual(["Editar entrada1", "Entrada2", "Entrada3"]);
     });
   });
 });

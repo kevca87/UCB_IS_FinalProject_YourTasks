@@ -6,8 +6,9 @@ class Task {
     getName(){
         return this.name;
     }
-    setTask(newName){
-        return this.name = newName; 
+    setTask(newName, newDescription){
+        this.name = newName;
+        this.description = newDescription;
     }
     getDescription(){
         return this.description;

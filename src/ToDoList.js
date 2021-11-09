@@ -38,8 +38,8 @@ class ToDoList {
         }
     }
 
-    editTaskInTasksList(){
-        
+    editTaskInTasksList(taskToEdit, newTask){
+        if(taskToEdit) this.tasksList[0].setTask(newTask.getName(), newTask.getDescription());
     }
 };
 export {ToDoList}
