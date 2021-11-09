@@ -12,6 +12,8 @@ const taskToEdit = document.querySelector("#task-to-edit-input");
 const newTask = document.querySelector("#new-task-input");
 const newTaskDescription = document.querySelector("#new-task-descripption-input");
 
+const formDelete = document.querySelector("#form-delete");
+const taskToDelete = document.querySelector("#task-to-delete-input");
 
 
 var todo_list = new ToDoList();
@@ -30,6 +32,16 @@ formEdit.addEventListener("submit",event=>{
     event.preventDefault();
     var task = new Task(newTask.value, newTaskDescription);
     todo_list.editTaskInTasksList(taskToEdit.value, task);
+    let task_list = "";
+    todo_list.getToDoList().forEach(element => {
+        task_list = task_list + ("<li>" + element + "</li>");
+    });
+    taskListOutput.innerHTML =  task_list;
+})
+
+formDelete.addEventListener("submit",event=>{
+    event.preventDefault();
+    todo_list.removeTask(taskToDelete.value);
     let task_list = "";
     todo_list.getToDoList().forEach(element => {
         task_list = task_list + ("<li>" + element + "</li>");

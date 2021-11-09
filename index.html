@@ -1,38 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>To do List</title>
-    </head>
-    <body>
-        <form id="form">
-            <div>
-              <label for="task-input">TO DO </label><br>
-              <input type="text" id="task-input"/>
-              <br>
-              <textarea id="task-description-input" rows="4" cols="50"></textarea>
-              <button id="button-submit" type="submit">Add</button>
-            </div>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To do List</title>
+</head>
+
+<body>
+    <form id="form">
+        <div>
+            <label for="task-input">TO DO </label><br>
+            <input type="text" id="task-input" />
             <br>
-        </form>
-        <form id="form-edit">
-            <div>
-                <label for="task-to-edit-input">EDIT TASK </label><br>
-                <input type="text" id="task-to-edit-input"/>
-                <br>
-                <label for="newTask-input">NEW TO DO </label><br>
-                <input type="text" id="new-task-input"/>
-                <br>
-                <textarea id="new-task-description-input" rows="4" cols="50"></textarea>
-                <button id="edit-button-submit" type="submit">Edit</button>
-            </div>
+            <textarea id="task-description-input" rows="4" cols="50"></textarea>
+            <button id="button-submit" type="submit">Add</button>
+        </div>
+        <br>
+    </form>
+    <form id="form-edit">
+        <div>
+            <label for="task-to-edit-input">EDIT TASK </label><br>
+            <input type="text" id="task-to-edit-input" />
             <br>
-        </form>
-        <ul id="final-list-output" name="final-list-output"></ul>
-        <script type="module" src="./src/index.js"></script>
-    </body>
+            <label for="newTask-input">NEW TO DO </label><br>
+            <input type="text" id="new-task-input" />
+            <br>
+            <textarea id="new-task-description-input" rows="4" cols="50"></textarea>
+            <button id="edit-button-submit" type="submit">Edit</button>
+        </div>
+        <br>
+    </form>
+    <form id="form-delete">
+        <div>
+            <label for="task-to-delete-input">DELETE TASK </label><br>
+            <input type="text" id="task-to-delete-input" />
+            <br>
+            <button id="delete-button-submit" type="submit">delete</button>
+        </div>
+    </form>
+    <ul id="final-list-output" name="final-list-output"></ul>
+    <script type="module" src="./src/index.js"></script>
+</body>
+
 </html>
 <!--cambios
 s
