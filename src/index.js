@@ -37,7 +37,7 @@ formEdit.addEventListener("submit",event=>{
         task_list = task_list + ("<li>" + element + "</li>");
     });
     taskListOutput.innerHTML =  task_list;
-})
+});
 
 formDelete.addEventListener("submit",event=>{
     event.preventDefault();
@@ -47,4 +47,4 @@ formDelete.addEventListener("submit",event=>{
         task_list = task_list + ("<li>" + element + "</li>");
     });
     taskListOutput.innerHTML =  task_list;
-})
+});

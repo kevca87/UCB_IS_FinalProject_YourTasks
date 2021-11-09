@@ -36,6 +36,14 @@ describe("Interfaz", () => {
       expect(taskListOutput.innerHTML).toEqual("<li>Editar primera tarea</li>");
     });
 
+    it("Eliminar un elemento de la lista de tareas", () => {
+      const taskToDelete = document.querySelector("#task-to-delete-input");
+      const taskListOutput = document.querySelector("#final-list-output");
+      const deleteButton = document.querySelector("#delete-button-submit");
+      taskToDelete.value = "Editar primera tarea";
+      deleteButton.click();
+      expect(taskListOutput.innerHTML).toEqual("");
+    });
 
     /*
     it("Al iniciar no hay nada en la lista de tareas", () => {
