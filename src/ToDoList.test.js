@@ -23,7 +23,7 @@ describe("Test", () => {
   it("Deberia agregar otro elemento conservando los anteriores", () => {
     expect(toDoList.getToDoList().length).toEqual(2);
   });
-  it("No deberia agregar ningun  elemento", () => {
+  /*it("No deberia agregar ningun  elemento", () => {
     toDoList.add("");
     expect(toDoList.getToDoList()).toEqual(["Entrada1","Entrada2"]);
   });
@@ -31,7 +31,7 @@ describe("Test", () => {
     toDoList.add(" ");
     toDoList.add("  ");
     expect(toDoList.getToDoList()).toEqual(["Entrada1","Entrada2"]);
-  });
+  });*/
   
 });
 
@@ -91,5 +91,16 @@ describe("Add description to the tasks", () => {
   });
   it("Ingresar una tarea que tenga una descripcion", () => {
     expect(toDoList.searchByName("Entrada4").getDescription()).toEqual("desc 4");
+  });
+
+  describe("Edit task from list.", () =>{
+    var toDoList = new ToDoList()
+    toDoList.add("Entrada1", "desc1");
+    toDoList.add("Entrada2", "desc2");
+    toDoList.add("Entrada3", "desc3");
+    it("Deberia devolver la lista sin ninguna modificacion", () => {
+      toDoList.editTaskInTasksList();
+      expect(toDoList.getToDoList()).toEqual(["Entrada1", "Entrada2", "Entrada3"]);
+    });
   });
 });

@@ -5,7 +5,7 @@ class ToDoList {
     constructor() {
       this.tasksList = [];
     }
-
+  
     getToDoList() {
         //var taskNamesLists = this.tasksList.map(x => {return x.getName();});
         var taskNamesLists = [];
@@ -16,14 +16,9 @@ class ToDoList {
         return taskNamesLists;
     }
 
-    add(newTaskName,description){
-        let sentenceExpression = new RegExp('\\w+');
-        var hasNotOnlySpaces = newTaskName.match(sentenceExpression) != null;
-        if(newTaskName !="" && hasNotOnlySpaces)
-        {
-            var newTask = new Task(newTaskName,description);
-            this.tasksList.push(newTask);
-        }
+    add(newTaskName,descript){
+        var newTask = new Task(newTaskName, descript);
+        this.tasksList.push(newTask);
         //['entra1','entra2','entra2'] - ['entra1','entra3','entra2']
     }
 
@@ -41,6 +36,10 @@ class ToDoList {
                this.tasksList.splice(i, 1);
             }
         }
+    }
+
+    editTaskInTasksList(){
+        
     }
 };
 export {ToDoList}
