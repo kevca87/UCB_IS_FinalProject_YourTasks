@@ -25,6 +25,18 @@ describe("Interfaz", () => {
         expect(taskListOutput.innerHTML).toEqual("<li>Primera tarea</li>");
     });
 
+    it("Editar un elemento de la lista de tareas", () => {
+      const taskToEdit = document.querySelector("#task-to-edit-input");
+      const newTask = document.querySelector("#new-task-input");
+      const taskListOutput = document.querySelector("#final-list-output");
+      const editButton = document.querySelector("#edit-button-submit");
+      taskToEdit.value = "Primera tarea";
+      newTask.value = "Editar primera tarea";
+      editButton.click();
+      expect(taskListOutput.innerHTML).toEqual("<li>Editar primera tarea</li>");
+    });
+
+
     /*
     it("Al iniciar no hay nada en la lista de tareas", () => {
       const lista_elem = document.querySelector("#lista-tareas");
