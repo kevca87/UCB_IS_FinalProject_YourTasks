@@ -11,14 +11,24 @@ class ToDoList {
         var taskNamesLists = [];
         for(var i=0; i<this.tasksList.length; i=i+1)
         {
-            taskNamesLists.push(this.tasksList[i].getName());
+            //Diego: lo hice asi porque devolver objetos me daba problemas, si quieren cambienlo como funciona o cambien las pruebas
+            var element = {
+                "Name": this.tasksList[i].getName(),
+                "Description": this.tasksList[i].getDescription()
+            }
+            taskNamesLists.push(element);
         }
         return taskNamesLists;
     }
 
-    add(newTaskName,descript){
-        var newTask = new Task(newTaskName, descript);
-        this.tasksList.push(newTask);
+    add(newTaskName, description){
+        let sentenceExpression = new RegExp('\\w+');
+        var hasNotOnlySpaces = newTaskName.match(sentenceExpression) != null;
+        if(newTaskName !="" && hasNotOnlySpaces)
+        {
+            var newTask = new Task(newTaskName,description);
+            this.tasksList.push(newTask);
+        }
         //['entra1','entra2','entra2'] - ['entra1','entra3','entra2']
     }
 
