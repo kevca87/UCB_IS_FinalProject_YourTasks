@@ -48,13 +48,19 @@ describe("Search task from a list", () => {
   var toDoList = new TasksList()
   toDoList.add("Entrada1");
   toDoList.add("Entrada2");
+  toDoList.add("Entrada3");
+  toDoList.add("Entrada4");
   it("Deberia eliminar un elemento de la lista", () => {
-    toDoList.removeTask("Entrada1");
-    expect(toDoList.getTasksNamesList()).toEqual(["Entrada2"]);
+    toDoList.removeTask(1);
+    expect(toDoList.getTasksNamesList()).toEqual(["Entrada2","Entrada3","Entrada4"]);
+  });
+  it("No deberia eliminar un elemento de la lista", () => {
+    toDoList.removeTask("");
+    expect(toDoList.getTasksNamesList()).toEqual(["Entrada2","Entrada3","Entrada4"]);
   });
   it("Deberia eliminar un elemento de la lista", () => {
-    toDoList.removeTask("");
-    expect(toDoList.getTasksNamesList()).toEqual(["Entrada2"]);
+    toDoList.removeTask(3);
+    expect(toDoList.getTasksNamesList()).toEqual(["Entrada2","Entrada4"]);
   });
 });
 
@@ -92,26 +98,36 @@ describe("Add description to the tasks", () => {
   it("Ingresar una tarea que tenga una descripcion", () => {
     expect(toDoList.searchByName("Entrada4").getDescription()).toEqual("desc 4");
   });
+  });
 
-  describe("Edit task from list.", () =>{
+describe("Edit task from list.", () =>{
     var toDoList = new TasksList()
     toDoList.add("Entrada1", "desc1");
     toDoList.add("Entrada2", "desc2");
     toDoList.add("Entrada3", "desc3");
     var task;
     it("Deberia devolver la lista sin ninguna modificacion", () => {
-      toDoList.editTaskInTasksList();
+      toDoList.editTask(5);
       expect(toDoList.getTasksNamesList()).toEqual(["Entrada1", "Entrada2", "Entrada3"]);
     });
     it("Deberia editar la tarea Entrada1 con los datos de la tarea task.", () => {
-      task = new Task("Editar entrada1", "Editar des1");
-      toDoList.editTaskInTasksList("Entrada1", task)
+      task = new Task(null,"Editar entrada1", "Editar des1");
+      toDoList.editTask(1, task);
       expect(toDoList.getTasksNamesList()).toEqual(["Editar entrada1", "Entrada2", "Entrada3"]);
     });
     it("Deberia editar la tarea Entrada3 con los datos de la tarea task.", () => {
-      task = new Task("Editar entrada3", "Editar des3");
-      toDoList.editTaskInTasksList("Entrada3", task)
+      task = new Task(null,"Editar entrada3", "Editar des3");
+      toDoList.editTask(3, task)
       expect(toDoList.getTasksNamesList()).toEqual(["Editar entrada1", "Entrada2", "Editar entrada3"]);
     });
+});
+
+describe("Debe devolver una lista con las task creadas", () => {
+  var tasksList = new TasksList();
+  var task1Name = "Task1";
+  var task1Desc = "Description Task1";
+  tasksList.add(task1Name,task1Desc);
+  it("Añadir tarea y descripción", () => {
+    expect(tasksList.getTasksList()).toEqual([Task(1,task1Name,task1Desc)]);
   });
 });

@@ -21,15 +21,25 @@ class TasksList {
         return taskNamesLists;
     }
 
+    getNextId(){
+        let nextId = 1;
+        var listLenght = this.tasksList.length;
+        if (listLenght > 0){
+            nextId = this.tasksList[listLenght-1]["id"] + 1;
+        }
+        return nextId;
+    }
+
     add(newTaskName, description){
         let sentenceExpression = new RegExp('\\w+');
         var hasNotOnlySpaces = newTaskName.match(sentenceExpression) != null;
-        if(newTaskName !="" && hasNotOnlySpaces)
+        var nameNotEmpty = newTaskName !="";
+        var id = this.getNextId();
+        if(hasNotOnlySpaces && nameNotEmpty)
         {
-            var newTask = new Task(newTaskName,description);
+            var newTask = new Task(id,newTaskName,description);
             this.tasksList.push(newTask);
         }
-        //['entra1','entra2','entra2'] - ['entra1','entra3','entra2']
     }
 
     searchByName(name){
@@ -40,19 +50,34 @@ class TasksList {
 	    return;
     }
 
-    removeTask(taskToDelete){
+    removeTask(taskId){
         for(var i =0; i < this.tasksList.length; i++) {
-            if(this.tasksList[i].getName() === taskToDelete) {
+            if(this.tasksList[i].hasSameId(taskId)) {
                this.tasksList.splice(i, 1);
             }
         }
     }
 
-    editTaskInTasksList(taskToEdit, newTask){
+    getTask(taskId)
+    {
+        var searchedTask = null;
         for(var i=0; i<this.tasksList.length; i++)
 	    {
-		    if(this.tasksList[i].getName() == taskToEdit) return this.tasksList[i].setTask(newTask.getName(), newTask.getDescription());
+            if(this.tasksList[i].hasSameId(taskId))
+            {
+                searchedTask = this.tasksList[i];
+            }
 	    }
+        return searchedTask;
+    }
+
+
+    editTask(taskId,modifiedTask){
+        var taskToEdit = this.getTask(taskId);
+        if (taskToEdit!=null)
+        {
+            taskToEdit.set(modifiedTask);
+        }
     }
 };
 export {TasksList as TasksList}
