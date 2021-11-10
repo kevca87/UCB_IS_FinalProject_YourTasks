@@ -1,22 +1,22 @@
 import {Task} from "./Task.js"
 
-class ToDoList {
+class TasksList {
 
     constructor() {
       this.tasksList = [];
     }
-  
-    getToDoList() {
+
+    getTasksList()
+    {
+        return this.tasksList;
+    }
+
+    getTasksNamesList() {
         //var taskNamesLists = this.tasksList.map(x => {return x.getName();});
         var taskNamesLists = [];
         for(var i=0; i<this.tasksList.length; i=i+1)
         {
-            //Diego: lo hice asi porque devolver objetos me daba problemas, si quieren cambienlo como funciona o cambien las pruebas
-            var element = {
-                "Name": this.tasksList[i].getName(),
-                "Description": this.tasksList[i].getDescription()
-            }
-            taskNamesLists.push(element);
+            taskNamesLists.push(this.tasksList[i].getName());
         }
         return taskNamesLists;
     }
@@ -55,4 +55,4 @@ class ToDoList {
 	    }
     }
 };
-export {ToDoList}
+export {TasksList as TasksList}

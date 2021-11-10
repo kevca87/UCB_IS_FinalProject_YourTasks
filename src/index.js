@@ -1,5 +1,5 @@
 import { Task } from './Task.js';
-import { ToDoList } from './ToDoList.js';
+import { TasksList } from './TasksList.js';
 
 
 const form = document.querySelector("#form");
@@ -16,27 +16,27 @@ const formDelete = document.querySelector("#form-delete");
 const taskToDelete = document.querySelector("#task-to-delete-input");
 
 
-var todo_list = new ToDoList();
+var tasksList = new TasksList();
 
 form.addEventListener("submit",event=>{
     event.preventDefault();
-    todo_list.add(taskName.value, taskDescription.value);
-    let task_list = ToDoListHtml(todo_list);
+    tasksList.add(taskName.value, taskDescription.value);
+    let task_list = getTasksListHtml(tasksList);
     taskListOutput.innerHTML =  task_list;
 })
 
 formEdit.addEventListener("submit",event=>{
     event.preventDefault();
     var task = new Task(newTask.value, newTaskDescription.value);
-    todo_list.editTaskInTasksList(taskToEdit.value, task);
-    let task_list = ToDoListHtml(todo_list);
+    tasksList.editTaskInTasksList(taskToEdit.value, task);
+    let task_list = getTasksListHtml(tasksList);
     taskListOutput.innerHTML =  task_list;
 });
 
 formDelete.addEventListener("submit",event=>{
     event.preventDefault();
-    todo_list.removeTask(taskToDelete.value);
-    let task_list = ToDoListHtml(todo_list);
+    tasksList.removeTask(taskToDelete.value);
+    let task_list = getTasksListHtml(tasksList);
     taskListOutput.innerHTML =  task_list;
 });
 
@@ -45,12 +45,12 @@ function introduceHtmlForTask(task, iteration){
     <div class="accordion-item">
         <h2 class="accordion-header" id="heading` + iteration + `">
             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse` + iteration + `" aria-expanded="false" aria-controls="collapse` + iteration + `">`
-                + task["Name"] +
+                + task["name"] +
             `</button>
         </h2>
         <div id="collapse` + iteration + `" class="accordion-collapse collapse" aria-labelledby="heading` + iteration + `" data-bs-parent="#accordionExample">
             <div class="accordion-body">`
-                + task["Description"] + `
+                + task["description"] + `
             </div>
         </div>
     </div>
@@ -58,12 +58,12 @@ function introduceHtmlForTask(task, iteration){
     return htmlListElement;
 }
 
-function ToDoListHtml(todoList){
-    let task_list = "";
+function getTasksListHtml(tasksList){
+    let taskListHtml = "";
     let iteration = 0;
-    todoList.getToDoList().forEach(element => {
-        task_list = task_list + (introduceHtmlForTask(element, iteration));
+    tasksList.getTasksList().forEach(task => {
+        taskListHtml = taskListHtml + (introduceHtmlForTask(task, iteration));
         iteration++;
     });
-    return task_list;
+    return taskListHtml;
 }
