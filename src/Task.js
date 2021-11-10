@@ -12,8 +12,8 @@ class Task {
         this.description = newDescription;
     }
     set(newTask){
-        this.name = newTask.name ?? this.name
-        this.description = newTask.description ?? this.description
+        this.name = newTask.name ?? this.name;
+        this.description = newTask.description ?? this.description;
     }
     getDescription(){
         return this.description;

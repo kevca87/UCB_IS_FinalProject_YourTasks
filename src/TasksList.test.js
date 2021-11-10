@@ -128,6 +128,6 @@ describe("Debe devolver una lista con las task creadas", () => {
   var task1Desc = "Description Task1";
   tasksList.add(task1Name,task1Desc);
   it("Añadir tarea y descripción", () => {
-    expect(tasksList.getTasksList()).toEqual([Task(1,task1Name,task1Desc)]);
+    expect(tasksList.getTasksList()).toEqual([new Task(1,task1Name,task1Desc)]);
   });
 });

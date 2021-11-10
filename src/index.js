@@ -12,22 +12,19 @@ const taskDeadline = document.getElementById('task-deadline-input');
 
 var tasksList = new TasksList();
 
+let option="";
+
 btnCreateTask.addEventListener('click', () => {
     taskName.value = ''
     taskDescription.value = ''
     taskDeadline.value=''
     modalTasks.show()
+    option = "create";
 })
-
-formTasks.addEventListener("submit",event=>{
-    event.preventDefault();
-    tasksList.add(taskName.value, taskDescription.value);
-    updateHtml();
-    modalTasks.hide()
-})
-
 
 const wrapper = document.getElementById('final-list-output');
+
+let taskId;
 
 wrapper.addEventListener('click', (event) => {
     const isButton = event.target.nodeName === 'BUTTON';
@@ -40,17 +37,35 @@ wrapper.addEventListener('click', (event) => {
     let regExpDelete = /-del-/;
     var isEdit = regExpEdit.test(buttonId)
     var isDelete = regExpDelete.test(buttonId)
-    var taskId;
     if(isEdit){
         taskId = buttonId.split(regExpEdit)[1];
-        alert('Falta implementar: index.js line:36');
-        updateHtml();
+        var task = tasksList.getTask(taskId);
+        taskName.value = task.getName();
+        taskDescription.value = task.getDescription();
+        option = "edit"
+        console.log(task)
+        modalTasks.show();
     }
     else if(isDelete){
         taskId= parseInt(buttonId.split(regExpDelete)[1]);
         tasksList.removeTask(taskId);
         updateHtml();
     }
+})
+
+formTasks.addEventListener("submit",event=>{
+
+    event.preventDefault();
+    if(option=="create"){
+        tasksList.add(taskName.value, taskDescription.value);
+    }
+    else if(option == "edit"){
+        var editedTask = new Task(null,taskName.value, taskDescription.value)
+        tasksList.editTask(taskId, editedTask);
+        console.log("edited...")
+    }
+    updateHtml();
+    modalTasks.hide();
 })
 
 
