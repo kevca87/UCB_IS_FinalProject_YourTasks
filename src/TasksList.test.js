@@ -157,3 +157,14 @@ describe("Debe devolver una lista con las task creadas", () => {
     expect(tasksList.getTasksList()).toEqual([new Task(1,task1Name,task1Desc)]);
   });
 });
+
+describe("Debe devolver una lista con las task creadas", () => {
+  var tasksList = new TasksList();
+  var task1Name = "Task1";
+  var task1Desc = "Description Task1";
+  var task1Date = "1995-02-11";
+  tasksList.add(task1Name,task1Desc,task1Date);
+  it("Añadir tarea y descripción", () => {
+    expect(tasksList.getTasksList()).toEqual([new Task(1,task1Name,task1Desc,task1Date)]);
+  });
+});

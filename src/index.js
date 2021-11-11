@@ -42,6 +42,7 @@ wrapper.addEventListener('click', (event) => {
         var task = tasksList.getTask(taskId);
         taskName.value = task.getName();
         taskDescription.value = task.getDescription();
+        taskDeadline.value=task.getDeadline();
         option = "edit"
         console.log(task)
         modalTasks.show();
@@ -57,10 +58,10 @@ formTasks.addEventListener("submit",event=>{
 
     event.preventDefault();
     if(option=="create"){
-        tasksList.add(taskName.value, taskDescription.value);
+        tasksList.add(taskName.value, taskDescription.value,taskDeadline.value);
     }
     else if(option == "edit"){
-        var editedTask = new Task(null,taskName.value, taskDescription.value)
+        var editedTask = new Task(null,taskName.value, taskDescription.value,taskDeadline.value)
         tasksList.editTask(taskId, editedTask);
         console.log("edited...")
     }
@@ -84,10 +85,15 @@ function introduceHtmlForTask(task, iteration){
         </h2>
         <div id="collapse` + iteration + `" class="accordion-collapse collapse" aria-labelledby="heading` + iteration + `" data-bs-parent="#accordionExample">
             <div class="accordion-body">
-                <div class="task-description">`
-                + task["description"] + `
+                <div class="task-description">
+                    <strong>Description:</strong><br>`
+                    + task["description"] + `
                 </div>
-                <div>
+                <div class="task-deadline">
+                    <strong>Deadline:</strong><br>`
+                    + task["deadline"] + `
+                </div>
+                <div class="btnsTasks">
                     <button id="bttn-edit-`+task["id"]+`" type="button" class="btn-edit btn btn-success py-0">Edit</button>
                     <button id="bttn-del-`+task["id"]+`" type="button" class="btn-del btn btn-danger py-0 px-1">Delete</button>
                 </div>
