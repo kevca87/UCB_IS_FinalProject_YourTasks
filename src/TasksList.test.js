@@ -150,11 +150,11 @@ describe("Debe devolver una lista de objetos (Task) con las task creadas", () =>
 
 describe("Debe devolver una lista con las task creadas (Ahora con categoria)", () => {
   let tasksList = new TasksList();
-  it("Añadir tarea y descripción", () => {
+  it("Añadir tarea, descripción y categoria", () => {
     tasksList.add("Task1","Desc 1","Category 1");
     expect(tasksList.getTasksList()).toEqual([new Task(1,"Task1","Desc 1","Category 1")]);
   });
-  it("Añadir tarea y descripción", () => {
+  it("Añadir tarea y descripción y categoria undefined", () => {
     tasksList.add("Task2","Desc 2",undefined);
     expect(tasksList.getTasksList()).toEqual([new Task(1,"Task1","Desc 1","Category 1"),
     new Task(2,"Task2","Desc 2")]);
@@ -172,5 +172,18 @@ describe("Debe devolver una lista con las task creadas", () => {
   });
   it("Añadir tarea y descripción", () => {
     expect(tasksList.getTask(1).getDeadline()).toEqual("1995-02-11");
+  });
+});
+
+describe("Debe devolver una lista con las task creadas (Ahora con categoria)", () => {
+  let tasksList = new TasksList();
+  it("Añadir tarea, descripción y categoria", () => {
+    tasksList.add("Task1","Desc 1","Category 1");
+    expect(tasksList.getTasksList()).toEqual([new Task(1,"Task1","Desc 1","Category 1")]);
+  });
+  it("Editar solo categoria", () => {
+    let task = new Task(null,null,null,"Category 30");
+    tasksList.editTask(1,task);
+    expect(tasksList.getTasksList()).toEqual([new Task(1,"Task1","Desc 1","Category 30")]);
   });
 });

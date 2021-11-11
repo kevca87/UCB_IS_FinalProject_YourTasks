@@ -72,3 +72,14 @@ div.task-description{
 .task-deadline{
     padding-top: 10px;
 }
+
+#btnCreateTask{
+    border-radius: 20px;
+    border: solid #111B54;
+    border-width: 1.5px;
+}
+
+#btnCreateTask:hover{
+    background-color: #111B54;
+    color: white;
+}
