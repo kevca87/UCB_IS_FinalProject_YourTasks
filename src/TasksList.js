@@ -49,6 +49,16 @@ class TasksList {
 	    }
 	    return;
     }
+    searchByDescription(description){
+        let matchDescription = new RegExp(description, "i");
+        var matchedTasks = []
+        for(var i=0; i<this.tasksList.length; i++)
+	    {
+            var taskDescription = this.tasksList[i].getDescription();
+		    if(matchDescription.test(taskDescription)) matchedTasks.push(this.tasksList[i]);
+	    }
+	    return matchedTasks;
+    }
 
     removeTask(taskId){
         for(var i =0; i < this.tasksList.length; i++) {
