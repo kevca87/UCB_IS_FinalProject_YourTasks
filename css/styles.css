@@ -83,3 +83,6 @@ div.task-description{
     background-color: #111B54;
     color: white;
 }
+#btnCreateTask:hover ion-icon{
+    color: #fff;
+}
