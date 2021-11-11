@@ -21,7 +21,7 @@ describe("Test", () => {
   it("Deberia agregar otro elemento conservando los anteriores", () => {
     expect(toDoList.getTasksNamesList().length).toEqual(2);
   });
-  /*it("No deberia agregar ningun  elemento", () => {
+  it("No deberia agregar ningun  elemento", () => {
     toDoList.add("");
     expect(toDoList.getTasksNamesList()).toEqual(["Entrada1","Entrada2"]);
   });
@@ -29,7 +29,7 @@ describe("Test", () => {
     toDoList.add(" ");
     toDoList.add("  ");
     expect(toDoList.getTasksNamesList()).toEqual(["Entrada1","Entrada2"]);
-  });*/
+  });
   
 });
 
@@ -120,6 +120,32 @@ describe("Edit task from list.", () =>{
       toDoList.editTask(3, task)
       expect(toDoList.getTasksNamesList()).toEqual(["Editar entrada1", "Entrada2", "Editar entrada3"]);
     });
+    it("Deberia editar la tarea Entrada3 con los datos de la tarea task.", () => {
+      task = new Task(null,"Entrada3", null);
+      toDoList.editTask(3, task)
+      expect(toDoList.getTasksNamesList()).toEqual(["Editar entrada1", "Entrada2", "Entrada3"]);
+    });
+    it("Deberia editar la tarea Entrada3 con los datos de la tarea task.", () => {
+      task = new Task(null,null, null);
+      toDoList.editTask(3, task)
+      expect(toDoList.getTasksNamesList()).toEqual(["Editar entrada1", "Entrada2", "Entrada3"]);
+    });
+});
+
+describe("Debe devolver una lista de objetos (Task) con las task creadas", () => {
+  var tasksList = new TasksList();
+  var task1Name = "Task1";
+  var task1Desc = "Description Task1";
+  var task2Name = "Task2";
+  var task2Desc = "Description Task2";
+  it("Añadir tarea y descripción", () => {
+    tasksList.add(task1Name,task1Desc);
+    expect(tasksList.getTasksList()).toEqual([new Task(1,task1Name,task1Desc)]);
+  });
+  it("Añadir tarea y descripción sobre tareas previas", () => {
+    tasksList.add(task2Name,task2Desc);
+    expect(tasksList.getTasksList()).toEqual([new Task(1,task1Name,task1Desc), new Task(2,task2Name,task2Desc)]);
+  });
 });
 
 describe("Debe devolver una lista con las task creadas", () => {

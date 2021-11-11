@@ -84,7 +84,7 @@ function introduceHtmlForTask(task, iteration){
         </h2>
         <div id="collapse` + iteration + `" class="accordion-collapse collapse" aria-labelledby="heading` + iteration + `" data-bs-parent="#accordionExample">
             <div class="accordion-body">
-                <div>`
+                <div class="task-description">`
                 + task["description"] + `
                 </div>
                 <div>

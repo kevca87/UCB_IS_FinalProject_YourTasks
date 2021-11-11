@@ -60,3 +60,7 @@ section{
 .accordion-button{
     width: 100%;
 }
+
+div.task-description{
+    padding: 20px 0px;
+}
