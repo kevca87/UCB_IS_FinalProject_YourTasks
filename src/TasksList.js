@@ -30,14 +30,14 @@ class TasksList {
         return nextId;
     }
 
-    add(newTaskName, description,deadline){
+    add(newTaskName, description,category,deadline){
         let sentenceExpression = new RegExp('\\w+');
         var hasNotOnlySpaces = newTaskName.match(sentenceExpression) != null;
         var nameNotEmpty = newTaskName !="";
         var id = this.getNextId();
         if(hasNotOnlySpaces && nameNotEmpty)
         {
-            var newTask = new Task(id,newTaskName,description,deadline);
+            var newTask = new Task(id,newTaskName,description,category,deadline);
             this.tasksList.push(newTask);
         }
     }

@@ -1,8 +1,9 @@
 class Task {
-    constructor(id,name,description,deadline) {
+    constructor(id,name,description,category, deadline) {
         this.id = id;
         this.name = name;
         this.description = description;
+        this.category = category;
         this.deadline=deadline;
     }
     getName(){
@@ -16,7 +17,8 @@ class Task {
     set(newTask){
         this.name = newTask.name ?? this.name;
         this.description = newTask.description ?? this.description;
-        this.deadline = newTask.deadline ?? this.deadline;
+        this.deadline = newTask.deadline;
+        this.category = newTask.category;
     }
     getDescription(){
         return this.description;

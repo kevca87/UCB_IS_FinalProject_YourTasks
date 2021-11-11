@@ -9,6 +9,7 @@ const formTasks = document.getElementById('formTasks');
 const taskName = document.getElementById('task-name-input');
 const taskDescription = document.getElementById('task-description-input');
 const taskDeadline = document.getElementById('task-deadline-input');
+const taskCategory = document.getElementById('category-select');
 
 var tasksList = new TasksList();
 
@@ -43,6 +44,7 @@ wrapper.addEventListener('click', (event) => {
         taskName.value = task.getName();
         taskDescription.value = task.getDescription();
         taskDeadline.value=task.getDeadline();
+        taskCategory.value = task["category"];
         option = "edit"
         console.log(task)
         modalTasks.show();
@@ -58,10 +60,10 @@ formTasks.addEventListener("submit",event=>{
 
     event.preventDefault();
     if(option=="create"){
-        tasksList.add(taskName.value, taskDescription.value,taskDeadline.value);
+        tasksList.add(taskName.value, taskDescription.value,taskCategory.value,taskDeadline.value);
     }
     else if(option == "edit"){
-        var editedTask = new Task(null,taskName.value, taskDescription.value,taskDeadline.value)
+        var editedTask = new Task(null,taskName.value, taskDescription.value,taskCategory.value,taskDeadline.value)
         tasksList.editTask(taskId, editedTask);
         console.log("edited...")
     }
@@ -85,12 +87,15 @@ function introduceHtmlForTask(task, iteration){
         </h2>
         <div id="collapse` + iteration + `" class="accordion-collapse collapse" aria-labelledby="heading` + iteration + `" data-bs-parent="#accordionExample">
             <div class="accordion-body">
-                <div class="task-description">
-                    <strong>Description:</strong><br>`
+                <div class="task-description">`
                     + task["description"] + `
                 </div>
+                <div class="task-description">
+                Category: `
+                + task["category"] + `
+                </div>
                 <div class="task-deadline">
-                    <strong>Deadline:</strong><br>`
+                    <strong>Deadline:</strong>`
                     + task["deadline"] + `
                 </div>
                 <div class="btnsTasks">

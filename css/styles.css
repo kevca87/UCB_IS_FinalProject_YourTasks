@@ -62,9 +62,13 @@ section{
 }
 
 div.task-description{
-    padding: 20px 0px;
+    padding-top: 10px;
 }
 
 .btnsTasks{
     padding-top: 15px;
+}
+
+.task-deadline{
+    padding-top: 10px;
 }

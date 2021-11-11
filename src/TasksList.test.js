@@ -148,13 +148,16 @@ describe("Debe devolver una lista de objetos (Task) con las task creadas", () =>
   });
 });
 
-describe("Debe devolver una lista con las task creadas", () => {
-  var tasksList = new TasksList();
-  var task1Name = "Task1";
-  var task1Desc = "Description Task1";
-  tasksList.add(task1Name,task1Desc);
+describe("Debe devolver una lista con las task creadas (Ahora con categoria)", () => {
+  let tasksList = new TasksList();
   it("Añadir tarea y descripción", () => {
-    expect(tasksList.getTasksList()).toEqual([new Task(1,task1Name,task1Desc)]);
+    tasksList.add("Task1","Desc 1","Category 1");
+    expect(tasksList.getTasksList()).toEqual([new Task(1,"Task1","Desc 1","Category 1")]);
+  });
+  it("Añadir tarea y descripción", () => {
+    tasksList.add("Task2","Desc 2",undefined);
+    expect(tasksList.getTasksList()).toEqual([new Task(1,"Task1","Desc 1","Category 1"),
+    new Task(2,"Task2","Desc 2")]);
   });
 });
 
@@ -163,8 +166,11 @@ describe("Debe devolver una lista con las task creadas", () => {
   var task1Name = "Task1";
   var task1Desc = "Description Task1";
   var task1Date = "1995-02-11";
-  tasksList.add(task1Name,task1Desc,task1Date);
+  tasksList.add(task1Name,task1Desc,null,task1Date);
   it("Añadir tarea y descripción", () => {
-    expect(tasksList.getTasksList()).toEqual([new Task(1,task1Name,task1Desc,task1Date)]);
+    expect(tasksList.getTasksList()).toEqual([new Task(1,task1Name,task1Desc,null,task1Date)]);
+  });
+  it("Añadir tarea y descripción", () => {
+    expect(tasksList.getTask(1).getDeadline()).toEqual("1995-02-11");
   });
 });
