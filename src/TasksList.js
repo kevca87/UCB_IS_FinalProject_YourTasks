@@ -1,4 +1,4 @@
-import {Task} from "./Task.js"
+import {Task,getTags} from "./Task.js"
 
 class TasksList {
 
@@ -38,6 +38,7 @@ class TasksList {
         if(hasNotOnlySpaces && nameNotEmpty)
         {
             var newTask = new Task(id,newTaskName,description,category,deadline);
+            newTask.extractTags();
             this.tasksList.push(newTask);
         }
     }
@@ -77,6 +78,7 @@ class TasksList {
         if (taskToEdit!=null)
         {
             taskToEdit.set(modifiedTask);
+            taskToEdit.extractTags();
         }
     }
 };

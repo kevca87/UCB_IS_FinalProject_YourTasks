@@ -38,8 +38,14 @@ class Task {
         return this.deadline;
     }
     extractTags(){
-        this.tags = getTags(this.description);
+        var isDescriptionSet = this.description != undefined || this.description != null;
+        if(isDescriptionSet){
+            this.tags = getTags(this.description);
+        }
         return this.tags;
+    }
+    getTagsStr(){
+        return this.tags.join(' ')
     }
 
 }

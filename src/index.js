@@ -94,6 +94,10 @@ function introduceHtmlForTask(task, iteration){
                 Category: `
                 + task["category"] + `
                 </div>
+                <div class="task-description">
+                Tags: `
+                + task.getTagsStr() + `
+                </div>
                 <div class="task-deadline">
                     <strong>Deadline:</strong>`
                     + task["deadline"] + `
