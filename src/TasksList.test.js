@@ -196,8 +196,27 @@ describe("getTags debe: ", () => {
     expect(tagsFound).toEqual(['#gym','#lol']);
   });
   it("Devolver en un arreglo vacio, por ausencia de tags", () => {
-    let description = 'Esta es una descripcion de ejemplo sin tags para extraer'
+    let description = 'Esta es una descripcion de ejemplo sin tags para extraer';
     let tagsFound = getTags(description);
     expect(tagsFound).toEqual([]);
+  });
+});
+
+describe("Task.extractTags() debe: ", () => {
+  it("Extraer cada una de las #tag presentes en la descripción de una tarea, y almacenarlas en el atributo tags", () => {
+    var task1Name = "Task1";
+    var task1Desc = 'Esta es una descripcion de ejemplo #gym para probar si extrae las tags #lol';
+    var task1Date = "1995-02-11";
+    var task = new Task(1,task1Name,task1Desc,null,task1Date)
+    task.extractTags();
+    expect(task['tags']).toEqual(['#gym','#lol']);
+  });
+  it("Devolver en un arreglo vacio, por ausencia de tags", () => {
+    var task1Name = "Task1";
+    var task1Desc =  'Esta es una descripcion de ejemplo sin tags para extraer';
+    var task1Date = "1995-02-11";
+    var task = new Task(1,task1Name,task1Desc,null,task1Date)
+    task.extractTags();
+    expect(task['tags']).toEqual([]);
   });
 });

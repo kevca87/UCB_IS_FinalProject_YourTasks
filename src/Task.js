@@ -11,6 +11,7 @@ class Task {
         this.description = description;
         this.category = category;
         this.deadline=deadline;
+        this.tags = []
     }
     getName(){
         return this.name;
@@ -35,6 +36,10 @@ class Task {
     }
     getDeadline(){
         return this.deadline;
+    }
+    extractTags(){
+        this.tags = getTags(this.description);
+        return this.tags;
     }
 
 }
