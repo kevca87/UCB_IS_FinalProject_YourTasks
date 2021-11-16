@@ -1,3 +1,9 @@
+function getTags(text){
+    var tagStructure = /#(\w)+\b/g;
+    var tags = text.match(tagStructure) ?? [];
+    return tags;
+}
+
 class Task {
     constructor(id,name,description,category, deadline) {
         this.id = id;
@@ -33,4 +39,4 @@ class Task {
 
 }
 
-export {Task}
+export {Task,getTags}

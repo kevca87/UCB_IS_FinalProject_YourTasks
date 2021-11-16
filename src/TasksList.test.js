@@ -1,5 +1,5 @@
 import {TasksList} from "./TasksList"
-import {Task} from "./Task"
+import {Task,getTags} from "./Task"
 
 /*var toDoList = new ToDoList();
 toDoList.add("Entrada1");
@@ -185,5 +185,19 @@ describe("Debe devolver una lista con las task creadas (Ahora con categoria)", (
     let task = new Task(null,null,null,"Category 30");
     tasksList.editTask(1,task);
     expect(tasksList.getTasksList()).toEqual([new Task(1,"Task1","Desc 1","Category 30")]);
+  });
+});
+
+
+describe("getTags debe: ", () => {
+  it("Extraer cada una de las #tag en un arreglo", () => {
+    let description = 'Esta es una descripcion de ejemplo #gym para probar si extrae las tags #lol'
+    let tagsFound = getTags(description);
+    expect(tagsFound).toEqual(['#gym','#lol']);
+  });
+  it("Devolver en un arreglo vacio, por ausencia de tags", () => {
+    let description = 'Esta es una descripcion de ejemplo sin tags para extraer'
+    let tagsFound = getTags(description);
+    expect(tagsFound).toEqual([]);
   });
 });
