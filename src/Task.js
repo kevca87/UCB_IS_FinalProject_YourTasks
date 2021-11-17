@@ -1,6 +1,7 @@
 function getTags(text){
     var tagStructure = /#(\w)+\b/g;
     var tags = text.match(tagStructure) ?? [];
+    tags = tags.filter((value,index)=>tags.indexOf(value)===index)
     return tags;
 }
 
