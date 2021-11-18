@@ -9,17 +9,31 @@ const formTasks = document.getElementById('formTasks');
 const taskName = document.getElementById('task-name-input');
 const taskDescription = document.getElementById('task-description-input');
 const taskDeadline = document.getElementById('task-deadline-input');
+const searchInput = document.getElementById('search-input');
+const searchForm = document.getElementById('search-form');
 
 var tasksList = new TasksList();
 
 let option="";
 
+//Open the modal for creating a task
 btnCreateTask.addEventListener('click', () => {
     taskName.value = ''
     taskDescription.value = ''
     taskDeadline.value=''
     modalTasks.show()
     option = "create";
+})
+
+//Search task by descriptions
+searchForm.addEventListener('submit', () => {
+    event.preventDefault();
+    if(searchInput.value != ""){
+        var matchingTasks = tasksList.searchByDescription(searchInput.value);
+        console.log(searchInput.value);
+        updateHtml(matchingTasks);
+    }
+    else updateHtml(tasksList);
 })
 
 const wrapper = document.getElementById('final-list-output');
@@ -49,7 +63,7 @@ wrapper.addEventListener('click', (event) => {
     else if(isDelete){
         taskId= parseInt(buttonId.split(regExpDelete)[1]);
         tasksList.removeTask(taskId);
-        updateHtml();
+        updateHtml(tasksList);
     }
 })
 
@@ -64,13 +78,14 @@ formTasks.addEventListener("submit",event=>{
         tasksList.editTask(taskId, editedTask);
         console.log("edited...")
     }
-    updateHtml();
+    updateHtml(tasksList);
     modalTasks.hide();
 })
 
 
-function updateHtml(){
-    let taskListHtml = getTasksListHtml(tasksList);
+
+function updateHtml(taskListToShow){
+    let taskListHtml = getTasksListHtml(taskListToShow);
     taskListOutput.innerHTML =  taskListHtml;
 }
 

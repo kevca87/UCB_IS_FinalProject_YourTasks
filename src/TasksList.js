@@ -51,11 +51,11 @@ class TasksList {
     }
     searchByDescription(description){
         let matchDescription = new RegExp(description, "i");
-        var matchedTasks = []
+        var matchedTasks = new TasksList();
         for(var i=0; i<this.tasksList.length; i++)
 	    {
             var taskDescription = this.tasksList[i].getDescription();
-		    if(matchDescription.test(taskDescription)) matchedTasks.push(this.tasksList[i]);
+		    if(matchDescription.test(taskDescription)) matchedTasks.add(this.tasksList[i].getName(), this.tasksList[i].getDescription());
 	    }
 	    return matchedTasks;
     }
