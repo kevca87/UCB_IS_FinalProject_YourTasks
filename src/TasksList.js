@@ -43,6 +43,10 @@ class TasksList {
         }
     }
 
+    addExistingTask(task){
+        this.tasksList.push(task);
+    }
+
     searchByName(name){
 	    for(var i=0; i<this.tasksList.length; i++)
 	    {
@@ -56,7 +60,7 @@ class TasksList {
         for(var i=0; i<this.tasksList.length; i++)
 	    {
             var taskDescription = this.tasksList[i].getDescription();
-		    if(matchDescription.test(taskDescription)) matchedTasks.add(this.tasksList[i].getName(), this.tasksList[i].getDescription());
+		    if(matchDescription.test(taskDescription)) matchedTasks.addExistingTask(this.tasksList[i]);
 	    }
 	    return matchedTasks;
     }

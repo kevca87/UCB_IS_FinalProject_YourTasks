@@ -33,6 +33,7 @@ searchForm.addEventListener('submit', () => {
         var matchingTasks = tasksList.searchByDescription(searchInput.value);
         console.log(searchInput.value);
         updateHtml(matchingTasks);
+        if(matchingTasks.getTasksList().length == 0) taskListOutput.innerHTML =  "No se encontraron coincidencias";
     }
     else updateHtml(tasksList);
 })

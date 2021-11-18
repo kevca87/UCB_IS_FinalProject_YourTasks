@@ -50,6 +50,7 @@ section{
     padding: 30px;
 }
 .btn{
+    margin-top: 10px;
     font-size: 18px;
 }
 #Lista-de-tareas{
