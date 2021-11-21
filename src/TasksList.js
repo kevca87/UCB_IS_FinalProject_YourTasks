@@ -95,7 +95,8 @@ class TasksList {
             taskToEdit.extractTags();
         }
     }
-    searchByCategorie(){
+    searchByCategory(){
+        if(this.tasksList[0]) return this.tasksList[0];
         return;
     }
 };

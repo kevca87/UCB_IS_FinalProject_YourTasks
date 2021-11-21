@@ -284,24 +284,30 @@ describe("Get categorie from a task.", () => {
   var task = new Task();
   var newTask;
   it("Deberia devolver undefinea", () => {
-    expect(task.getCategorie()).toEqual();
+    expect(task.getCategory()).toEqual();
   });
   it("Deberia devolver Cat1", () => {
     newTask = new Task(1, "Entrada1", "", "Cat1", "");
     task.set(newTask);
-    expect(task.getCategorie()).toEqual("Cat1");
+    expect(task.getCategory()).toEqual("Cat1");
   });
   it("Deberia devolver Cat3", () => {
     newTask = new Task(1, "Entrada3", "", "Cat3", "");
     task.set(newTask);
-    expect(task.getCategorie()).toEqual("Cat3");
+    expect(task.getCategory()).toEqual("Cat3");
   });
 });
 
 describe("Search task from a list by desciption", () => {
   var toDoList = new TasksList();
+  var tasks; 
   it("Deberia devolver undefine", () => {
-    toDoList.searchByDescription();
-    expect(toDoList.searchByCategorie()).toEqual();
+    toDoList.searchByCategory();
+    expect(toDoList.getTasksNamesList()).toEqual([]);
+  });
+  it("Deberia devolver Cat1", () => {
+    toDoList.add("Entrada1", "", "Cat1", "");
+    tasks = toDoList.searchByCategory();
+    expect(toDoList.getTasksNamesList()).toEqual(["Entrada1"]);
   });
 });

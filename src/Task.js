@@ -48,7 +48,7 @@ class Task {
     getTagsStr(){
         return this.tags.join(' ')
     }
-    getCategorie(){
+    getCategory(){
         return this.category;
     }
 }
