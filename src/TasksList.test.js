@@ -302,6 +302,8 @@ describe("Search task from a list by desciption", () => {
   var toDoList = new TasksList();
   toDoList.add("Entrada1", "", "Cat1", "");
   toDoList.add("Entrada2", "", "Cat2", "");
+  toDoList.add("Entrada3", "", "Cat3", "");
+  toDoList.add("Entrada4", "", "Cat3", "");
   var tasks; 
   it("Deberia devolver undefine", () => {
     tasks = toDoList.searchByCategory();
@@ -314,5 +316,9 @@ describe("Search task from a list by desciption", () => {
   it("Deberia devolver la tareas que coincidan con la categoria", () => {
     tasks = toDoList.searchByCategory("Cat2");
     expect(tasks.getTasksNamesList()).toEqual(["Entrada2"]);
+  });
+  it("Deberia devolver la tareas que coincidan con la categoria", () => {
+    tasks = toDoList.searchByCategory("Cat3");
+    expect(tasks.getTasksNamesList()).toEqual(["Entrada3", "Entrada4"]);
   });
 });
