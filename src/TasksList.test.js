@@ -297,3 +297,11 @@ describe("Get categorie from a task.", () => {
     expect(task.getCategorie()).toEqual("Cat3");
   });
 });
+
+describe("Search task from a list by desciption", () => {
+  var toDoList = new TasksList();
+  it("Deberia devolver undefine", () => {
+    toDoList.searchByDescription();
+    expect(toDoList.searchByCategorie()).toEqual();
+  });
+});

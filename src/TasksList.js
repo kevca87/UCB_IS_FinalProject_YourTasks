@@ -95,5 +95,8 @@ class TasksList {
             taskToEdit.extractTags();
         }
     }
+    searchByCategorie(){
+        return;
+    }
 };
 export {TasksList as TasksList}
