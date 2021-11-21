@@ -66,6 +66,9 @@ section{
 .accordion-button{
     width: 100%;
 }
+.accordion-button h2{
+    width: 90%;
+}
 
 div.task-description{
     padding-top: 10px;
@@ -101,4 +104,12 @@ div.task-description{
     border: none;
     outline: none;
     box-shadow: none;
+}
+
+/*-------------*/
+
+  
+.hidden-box:checked + .check-label .accordion-button{
+    text-decoration:line-through;
+    color: rgba(92, 89, 89, 0.445);
 }

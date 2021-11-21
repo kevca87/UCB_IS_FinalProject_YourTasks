@@ -97,11 +97,11 @@ function updateHtml(taskListToShow){
 function introduceHtmlForTask(task, iteration){
     var htmlListElement = `
     <div id="accordion-item-`+task["id"]+`" class="accordion-item">
-        <input type="checkbox" name="" id=""heading` + iteration + `"">
-        <label for="heading` + iteration + `" class="accordion-header" id="heading` + iteration + `">       
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse` + iteration + `" aria-expanded="false" aria-controls="collapse` + iteration + `">
-            `+ task["name"] +
-            `</button>
+        <input type="checkbox" name="" id="heading` + iteration + `" class="hidden-box">
+        <label for="heading` + iteration + `" class="accordion-header check-label" id="heading` + iteration + `">       
+            <button class="accordion-button check-label-text collapsed " type="button" data-bs-toggle="collapse" data-bs-target="#collapse` + iteration + `" aria-expanded="false" aria-controls="collapse` + iteration + `">
+                `+ task["name"] +`
+            </button>
         </label>
        
         <div id="collapse` + iteration + `" class="accordion-collapse collapse" aria-labelledby="heading` + iteration + `" data-bs-parent="#accordionExample">
