@@ -30,12 +30,13 @@ btnCreateTask.addEventListener('click', () => {
 //Search task by descriptions
 searchForm.addEventListener('submit', () => {
     event.preventDefault();
-    var matchingTasks = tasksList;
-    console.log('search: ' + '"' + searchInput.value + '"' + ', category: ' + '"' + categoryInput.value + '"');
-    if(searchInput.value != "") matchingTasks = tasksList.searchByDescription(searchInput.value);
-    if(categoryInput.value != 'All') matchingTasks = matchingTasks.searchByCategory(categoryInput.value);
-    if(matchingTasks.getTasksList().length == 0) taskListOutput.innerHTML =  "No se encontraron coincidencias";
-    else updateHtml(matchingTasks);
+    if(searchInput.value != ""){
+        var matchingTasks = tasksList.searchByDescription(searchInput.value);
+        console.log(searchInput.value);
+        updateHtml(matchingTasks);
+        if(matchingTasks.getTasksList().length == 0) taskListOutput.innerHTML =  "No se encontraron coincidencias";
+    }
+    else updateHtml(tasksList);
 })
 
 const wrapper = document.getElementById('final-list-output');
@@ -97,26 +98,25 @@ function introduceHtmlForTask(task, iteration){
     var htmlListElement = `
     <div id="accordion-item-`+task["id"]+`" class="accordion-item">
         <h2 class="accordion-header" id="heading` + iteration + `">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse` + iteration + `" aria-expanded="false" aria-controls="collapse` + iteration + `">`
-                + task["name"] +
+            
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse` + iteration + `" aria-expanded="false" aria-controls="collapse` + iteration + `">
+            <input type="checkbox" name="" id="">`+ task["name"] +
             `</button>
         </h2>
+       
         <div id="collapse` + iteration + `" class="accordion-collapse collapse" aria-labelledby="heading` + iteration + `" data-bs-parent="#accordionExample">
             <div class="accordion-body">
                 <div class="task-description">`
                     + task["description"] + `
                 </div>
                 <div class="task-description">
-                Category: `
-                + task["category"] + `
+                    Category: `+ task["category"] + `
                 </div>
                 <div class="task-description">
-                Tags: `
-                + task.getTagsStr() + `
+                    Tags: ` + task.getTagsStr() + `
                 </div>
                 <div class="task-deadline">
-                    <strong>Deadline:</strong>`
-                    + task["deadline"] + `
+                    <strong>Deadline:</strong>` + task["deadline"] + `
                 </div>
                 <div class="btnsTasks">
                     <button id="bttn-edit-`+task["id"]+`" type="button" class="btn-edit btn btn-success py-0">Edit</button>

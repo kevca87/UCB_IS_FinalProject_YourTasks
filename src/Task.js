@@ -6,13 +6,15 @@ function getTags(text){
 }
 
 class Task {
-    constructor(id,name,description,category, deadline) {
+    constructor(id,name,description,category, deadline, isComplete) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.category = category;
         this.deadline=deadline;
+        this.isComplete = isComplete ?? false;
         this.tags = []
+        
     }
     getName(){
         return this.name;
@@ -27,6 +29,7 @@ class Task {
         this.description = newTask.description ?? this.description;
         this.deadline = newTask.deadline;
         this.category = newTask.category;
+        this.isComplete = newTask.isComplete;
     }
     getDescription(){
         return this.description;

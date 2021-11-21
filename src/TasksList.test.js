@@ -322,3 +322,15 @@ describe("Search task from a list by desciption", () => {
     expect(tasks.getTasksNamesList()).toEqual(["Entrada3", "Entrada4"]);
   });
 });
+describe("Debe devolver una lista con las task que aun estan pendientes", () => {
+  let tasksList = new TasksList();
+  it("Devolver una lista con tareas mostrando el estado de las tareas creadas", () => {
+    tasksList.add("Task1","Desc 1","Category 1", null);
+    tasksList.add("Task2","Desc 2",null, null);
+    expect(tasksList.getTasksList()).toEqual([new Task(1,"Task1","Desc 1","Category 1",null,false),new Task(2,"Task2","Desc 2",null,null,false)]);
+  });
+  it("Devolver una lista con tareas aun no completadas, despues de completar la tarea 2", () => {
+    tasksList.CompleteTask(2,true);
+    expect(tasksList.getTasksListIncompletes()).toEqual([new Task(1,"Task1","Desc 1","Category 1",null,false)]);
+  });
+});
