@@ -98,8 +98,10 @@ class TasksList {
     searchByCategory(category){
         var matchedTasks = new TasksList();
         var i = 0;
+        let matchCategory = new RegExp(category, "i");
         while(i < this.tasksList.length){
-            if(this.tasksList[i].getCategory() == category) matchedTasks.addExistingTask(this.tasksList[i]);
+            var taskCategory = this.tasksList[i].getCategory();
+		    if(matchCategory.test(taskCategory)) matchedTasks.addExistingTask(this.tasksList[i]);
             i++;
         }
         return matchedTasks;

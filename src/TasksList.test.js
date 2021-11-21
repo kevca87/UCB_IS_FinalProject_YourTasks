@@ -306,7 +306,7 @@ describe("Search task from a list by desciption", () => {
   toDoList.add("Entrada4", "", "Cat3", "");
   var tasks; 
   it("Deberia devolver undefine", () => {
-    tasks = toDoList.searchByCategory();
+    tasks = toDoList.searchByCategory("h");
     expect(tasks.getTasksNamesList()).toEqual([]);
   });
   it("Deberia devolver Entrada1", () => {
