@@ -1,7 +1,7 @@
 import {TasksList} from "./TasksList"
 import {Task} from "./Task"
 import fs from "fs";
-import { Modal } from 'bootstrap'
+//import { Modal } from 'bootstrap'
 
 //Diego: hice estos tests para probar la busqueda en cuanto a descripcion, si les da conflictos al cambiar la interfaz pueden modificarlo o borrarlo 👍👍
 /*

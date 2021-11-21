@@ -48,7 +48,9 @@ class Task {
     getTagsStr(){
         return this.tags.join(' ')
     }
-
+    getCategorie(){
+        return;
+    }
 }
 
 export {Task,getTags}
