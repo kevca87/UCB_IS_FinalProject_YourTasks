@@ -282,7 +282,13 @@ describe("Task.extractTags() debe: ", () => {
 
 describe("Get categorie from a task.", () => {
   var task = new Task();
+  var newTask;
   it("Deberia devolver undefinea", () => {
     expect(task.getCategorie()).toEqual();
+  });
+  it("Deberia devolver Cat1", () => {
+    newTask = new Task(1, "Entrada1", "", "Cat1", "");
+    task.set(newTask);
+    expect(task.getCategorie()).toEqual("Cat1");
   });
 });
