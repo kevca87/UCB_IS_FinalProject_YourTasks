@@ -57,7 +57,12 @@ section{
     margin-top: 50px;
     width: 700px;
 }
-
+.accordion-item{
+    padding-left: 10px;
+}
+.accordion-header{
+    width: 97%;
+}
 .accordion-button{
     width: 100%;
 }
