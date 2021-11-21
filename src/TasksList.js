@@ -97,12 +97,11 @@ class TasksList {
     }
     searchByCategory(category){
         var matchedTasks = new TasksList();
-        var i = 0;
         let matchCategory = new RegExp(category, "i");
-        while(i < this.tasksList.length){
-            var taskCategory = this.tasksList[i].getCategory();
+        var taskCategory;
+        for(var i = 0; i < this.tasksList.length; i++){
+            taskCategory = this.tasksList[i].getCategory();
 		    if(matchCategory.test(taskCategory)) matchedTasks.addExistingTask(this.tasksList[i]);
-            i++;
         }
         return matchedTasks;
     }
