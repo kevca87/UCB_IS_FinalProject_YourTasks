@@ -95,9 +95,14 @@ class TasksList {
             taskToEdit.extractTags();
         }
     }
-    searchByCategory(){
-        if(this.tasksList[0]) return this.tasksList[0];
-        return;
+    searchByCategory(category){
+        var matchedTasks = new TasksList();
+        var i = 0;
+        while(i < this.tasksList.length){
+            if(this.tasksList[i].getCategory() == category) matchedTasks.addExistingTask(this.tasksList[i]);
+            i++;
+        }
+        return matchedTasks;
     }
 };
 export {TasksList as TasksList}
