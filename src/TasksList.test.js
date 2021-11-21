@@ -291,4 +291,9 @@ describe("Get categorie from a task.", () => {
     task.set(newTask);
     expect(task.getCategorie()).toEqual("Cat1");
   });
+  it("Deberia devolver Cat3", () => {
+    newTask = new Task(1, "Entrada3", "", "Cat3", "");
+    task.set(newTask);
+    expect(task.getCategorie()).toEqual("Cat3");
+  });
 });

@@ -49,8 +49,7 @@ class Task {
         return this.tags.join(' ')
     }
     getCategorie(){
-        if(this.category) return "Cat1";
-        return;
+        return this.category;
     }
 }
 
