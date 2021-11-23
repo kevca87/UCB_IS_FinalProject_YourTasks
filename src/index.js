@@ -1,8 +1,10 @@
 import { Task } from './Task.js';
 import { TasksList } from './TasksList.js';
+const bootstrap = require('bootstrap');
 
 const taskListOutput = document.querySelector("#final-list-output");
 
+var wrapper = document.getElementById('final-list-output');
 
 const modalTasks = new bootstrap.Modal(document.getElementById('modalTasks'));
 const formTasks = document.getElementById('formTasks');
@@ -38,8 +40,6 @@ searchForm.addEventListener('submit', () => {
     }
     else updateHtml(tasksList);
 })
-
-const wrapper = document.getElementById('final-list-output');
 
 let taskId;
 
@@ -95,6 +95,7 @@ function updateHtml(taskListToShow){
 }
 
 function introduceHtmlForTask(task, iteration){
+    wrapper = document.getElementById('final-list-output');
     var htmlListElement = `
     <div id="accordion-item-`+task["id"]+`" class="accordion-item">
         <input type="checkbox" name="" id="heading` + iteration + `" class="hidden-box">

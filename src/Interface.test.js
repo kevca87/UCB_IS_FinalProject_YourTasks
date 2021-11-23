@@ -22,14 +22,13 @@ function createTasks(numberOfTasks){
 
 
 describe("Interfaz", () => {
-
   /*
   beforeAll(() => {
-    document.body.innerHTML = fs.readFileSync("index.html",);
+    document.body.innerHTML = fs.readFileSync("index.html","utf-8");
+    console.log('lol');
     require("./index.js");
-    require('https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js');
-  });
-  */
+    console.log('lol2');
+  });*/
   it("Testear una interfaz de busqueda de descipcion", () => {
     expect(1).toEqual(1);
     /*

@@ -19,5 +19,9 @@
     "babel-jest": "^27.1.0",
     "jest": "^27.1.0",
     "parcel": "^2.0.0-rc.0"
+  },
+  "dependencies": {
+    "@popperjs/core": "^2.10.2",
+    "bootstrap": "^5.1.3"
   }
 }
