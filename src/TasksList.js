@@ -66,6 +66,15 @@ class TasksList {
 	    return matchedTasks;
     }
 
+    searchByTag(tag){
+        var matchedTasks = new TasksList();
+        for(var i=0; i<this.tasksList.length; i++){
+            var taskTags = this.tasksList[i].getTags();
+            if(taskTags.includes(tag)) matchedTasks.addExistingTask(this.tasksList[i]);
+        }
+        return matchedTasks
+    }
+
     removeTask(taskId){
         for(var i =0; i < this.tasksList.length; i++) {
             if(this.tasksList[i].hasSameId(taskId)) {

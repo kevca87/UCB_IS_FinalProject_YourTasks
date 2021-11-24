@@ -322,6 +322,7 @@ describe("Search task from a list by desciption", () => {
     expect(tasks.getTasksNamesList()).toEqual(["Entrada3", "Entrada4"]);
   });
 });
+
 describe("Debe devolver una lista con las task que aun estan pendientes", () => {
   let tasksList = new TasksList();
   it("Devolver una lista con tareas mostrando el estado de las tareas creadas", () => {
@@ -332,5 +333,30 @@ describe("Debe devolver una lista con las task que aun estan pendientes", () => 
   it("Devolver una lista con tareas aun no completadas, despues de completar la tarea 2", () => {
     tasksList.CompleteTask(2,true);
     expect(tasksList.getTasksListIncompletes()).toEqual([new Task(1,"Task1","Desc 1","Category 1",null,false)]);
+  });
+});
+
+describe("Search task from a list by tags", () => {
+  var toDoList = new TasksList();
+  toDoList.add("Entrada1", "desc 1 #tag1", "", "");
+  toDoList.add("Entrada2", "desc 1 #tag1", "", "");
+  toDoList.add("Entrada3", "desc 1 #tag2", "", "");
+  toDoList.add("Entrada4", "desc 1 #tag3", "", "");
+  var tasks; 
+  it("Deberia devolver una lista vacia", () => {
+    tasks = toDoList.searchByTag("#notatag");
+    expect(tasks.getTasksNamesList()).toEqual([]);
+  });
+  it("Deberia devolver Entrada2", () => {
+    tasks = toDoList.searchByTag("#tag2");
+    expect(tasks.getTasksNamesList()).toEqual(["Entrada3"]);
+  });
+  it("Deberia devolver la tareas que coincidan con la etiqueta", () => {
+    tasks = toDoList.searchByTag("#tag3");
+    expect(tasks.getTasksNamesList()).toEqual(["Entrada4"]);
+  });
+  it("Deberia devolver la tareas que coincidan con la etiqueta", () => {
+    tasks = toDoList.searchByTag("#tag1");
+    expect(tasks.getTasksNamesList()).toEqual(["Entrada1", "Entrada2"]);
   });
 });

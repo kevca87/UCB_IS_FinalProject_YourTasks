@@ -41,6 +41,9 @@ class Task {
     getDeadline(){
         return this.deadline;
     }
+    getTags(){
+        return this.tags;
+    }
     extractTags(){
         var isDescriptionSet = this.description != undefined || this.description != null;
         if(isDescriptionSet){
