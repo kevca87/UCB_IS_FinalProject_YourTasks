@@ -29,11 +29,16 @@ btnCreateTask.addEventListener('click', () => {
     option = "create";
 })
 
-//Search task by descriptions
+//Search task by descriptions or tags
 searchForm.addEventListener('submit', () => {
     event.preventDefault();
     if(searchInput.value != ""){
-        var matchingTasks = tasksList.searchByDescription(searchInput.value);
+        if(searchInput.value.startsWith('#')){
+            var matchingTasks = tasksList.searchByTag(searchInput.value);
+        }
+        else{
+            var matchingTasks = tasksList.searchByDescription(searchInput.value);
+        }
         console.log(searchInput.value);
         updateHtml(matchingTasks);
         if(matchingTasks.getTasksList().length == 0) taskListOutput.innerHTML =  "No se encontraron coincidencias";
