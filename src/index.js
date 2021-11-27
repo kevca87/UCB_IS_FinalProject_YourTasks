@@ -1,18 +1,27 @@
 import { Task } from './Task.js';
 import { TasksList } from './TasksList.js';
 const bootstrap = require('bootstrap');
+const modalTasks = new bootstrap.Modal(document.getElementById('modalTasks'));
+
 
 const taskListOutput = document.querySelector("#final-list-output");
 
-var wrapper = document.getElementById('final-list-output');
+//var wrapper = document.getElementById('final-list-output');
+var wrapper = document.querySelector('#final-list-output');
+//console.log('wrapper: ',wrapper);
 
-const modalTasks = new bootstrap.Modal(document.getElementById('modalTasks'));
 const formTasks = document.getElementById('formTasks');
 const taskName = document.getElementById('task-name-input');
 const taskDescription = document.getElementById('task-description-input');
 const taskDeadline = document.getElementById('task-deadline-input');
 const taskCategory = document.getElementById('category-select');
+const logo = document.getElementById('logo');
+//const btnCreateTask = document.getElementById('btnCreateTask');
+//console.log('create: ',btnCreateTask)
+
 const searchInput = document.getElementById('search-input');
+//console.log('search: ' ,searchInput)
+
 const searchForm = document.getElementById('search-form');
 const categoryInput = document.getElementById('category-input');
 
@@ -78,18 +87,20 @@ wrapper.addEventListener('click', (event) => {
 })
 
 formTasks.addEventListener("submit",event=>{
-
     event.preventDefault();
     if(option=="create"){
         tasksList.add(taskName.value, taskDescription.value,taskCategory.value,taskDeadline.value);
+        console.log(option);
     }
     else if(option == "edit"){
         var editedTask = new Task(null,taskName.value, taskDescription.value,taskCategory.value,taskDeadline.value)
         tasksList.editTask(taskId, editedTask);
         console.log("edited...")
+        console.log(option);
     }
     updateHtml(tasksList);
     modalTasks.hide();
+    logo.textContent = "Whats up";
 })
 
 

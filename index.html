@@ -21,11 +21,10 @@
 </head>
 
 <body>
-
     <div class="d-flex">
         <div id="sidebar-container" class="bg-primary">
             <div class="logo">
-                <h4>Your Tasks</h4>
+                <h4 id="logo">Your Tasks</h4>
             </div>
             <div class="menu">
                 <!--<a href="">
@@ -45,6 +44,7 @@
 
         <section>
             <!--Search bar for description or tags-->
+            
             <div class="col-12 col-md-10 col-lg-8">
                 <form class="card card-sm" id="search-form" style="width: 600px;">
                     <div class="card-body row no-gutters align-items-center">
@@ -71,34 +71,43 @@
                     </div>
                 </form>
             </div>
+            
             <div id="newTask">
+                
                 <button id="btnCreateTask" type="button" class="btn" data-bs-toggle="modal" data-bs-target="#modalTasks">
                     New task    <ion-icon name="create"></ion-icon>
                 </button>
                 <div class="modal fade" id="modalTasks" tabindex="-1" aria-labelledby="modalTasksLabel"
                     aria-hidden="true">
                     <div class="modal-dialog">
+                        
                         <div class="modal-content">
+                            
                             <div class="modal-header">
                                 <h5 class="modal-title" id="modalTasksLabel">Task</h5>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
                                     aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
+                                
                                 <form id="formTasks">
+                                    
                                     <div class="form-group my-1 row">
                                         <label for="task-name-input" class="col-form-label py-1 col-sm-4">Task Name</label>
                                         <div class="col-sm-8">
                                             <input type="text" class="form-control form-control-sm" id="task-name-input">
                                         </div>
                                     </div>
+                                    
                                     <div class="form-group my-1 row">
+                                        
                                         <label for="task-description-input"
                                             class="col-form-label pb-0 col-sm-4">Task Description</label>
                                         <div class="col-sm-8">
-                                            <textarea class="form-control form-control-sm" id="task-description-input">
+                                            <input class="form-control form-control-sm" id="task-description-input">
                                         </div>
                                     </div>
+                                    
                                     <div class="form-group my-1 row">
                                         <label for="category-select"
                                             class="col-form-label pb-0 col-sm-4">Category: </label>
@@ -109,6 +118,7 @@
                                                 <option value="Personal">Personal</option>
                                             </select>
                                         </div>
+                                        
                                     </div>
                                     <div class="form-group my-1 row">
                                         <label for="task-deadline-input" class="col-form-label py-1 col-sm-4">Deadline</label>
@@ -117,7 +127,7 @@
                                         </div>
                                     </div>
                                     
-
+                                    
                                     <div class="modal-footer my-0 py-1">
                                         <button type="button" class="btn btn-secondary"
                                             data-bs-dismiss="modal">Close</button>
@@ -129,9 +139,9 @@
                     </div>
                 </div>
             </div>
-
+            
             <div id="Lista-de-tareas">
-                <div class="accordion" id="final-list-output" name="final-list-output"> 
+                <div id="final-list-output" name="final-list-output"> 
                     
                 </div>
             </div>
