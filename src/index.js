@@ -39,7 +39,7 @@ btnCreateTask.addEventListener('click', () => {
 })
 
 //Search task by descriptions or tags
-searchForm.addEventListener('submit', () => {
+searchForm.addEventListener('submit', (event) => {
     event.preventDefault();
     if(searchInput.value != ""){
         if(searchInput.value.startsWith('#')){
@@ -63,7 +63,6 @@ wrapper.addEventListener('click', (event) => {
     return;
     }
     let buttonId = event.target.id;
-    console.log(buttonId);
     let regExpEdit = /-edit-/;
     let regExpDelete = /-del-/;
     var isEdit = regExpEdit.test(buttonId)
@@ -75,8 +74,7 @@ wrapper.addEventListener('click', (event) => {
         taskDescription.value = task.getDescription();
         taskDeadline.value=task.getDeadline();
         taskCategory.value = task["category"];
-        option = "edit"
-        console.log(task)
+        option = "edit";
         modalTasks.show();
     }
     else if(isDelete){
@@ -90,13 +88,10 @@ formTasks.addEventListener("submit",event=>{
     event.preventDefault();
     if(option=="create"){
         tasksList.add(taskName.value, taskDescription.value,taskCategory.value,taskDeadline.value);
-        console.log(option);
     }
     else if(option == "edit"){
         var editedTask = new Task(null,taskName.value, taskDescription.value,taskCategory.value,taskDeadline.value)
         tasksList.editTask(taskId, editedTask);
-        console.log("edited...")
-        console.log(option);
     }
     updateHtml(tasksList);
     modalTasks.hide();
