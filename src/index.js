@@ -20,6 +20,7 @@ const logo = document.getElementById('logo');
 //console.log('create: ',btnCreateTask)
 
 const searchInput = document.getElementById('search-input');
+const taskTags = document.getElementById('task-tags-input');
 //console.log('search: ' ,searchInput)
 
 const searchForm = document.getElementById('search-form');
@@ -34,6 +35,7 @@ btnCreateTask.addEventListener('click', () => {
     taskName.value = ''
     taskDescription.value = ''
     taskDeadline.value=''
+    taskTags.value=''
     modalTasks.show()
     option = "create";
 })
@@ -63,6 +65,7 @@ wrapper.addEventListener('click', (event) => {
     return;
     }
     let buttonId = event.target.id;
+
     let regExpEdit = /-edit-/;
     let regExpDelete = /-del-/;
     var isEdit = regExpEdit.test(buttonId)
@@ -87,11 +90,18 @@ wrapper.addEventListener('click', (event) => {
 formTasks.addEventListener("submit",event=>{
     event.preventDefault();
     if(option=="create"){
-        tasksList.add(taskName.value, taskDescription.value,taskCategory.value,taskDeadline.value);
+        var task = new Task(null,taskName.value,taskDescription.value,taskCategory.value,taskDeadline.value);
+        task.extractTags();
+        task.addTags(taskTags.value);
+        tasksList.addTask(task);
+        //tasksList.add(taskName.value, taskDescription.value,taskCategory.value,taskDeadline.value);
     }
     else if(option == "edit"){
         var editedTask = new Task(null,taskName.value, taskDescription.value,taskCategory.value,taskDeadline.value)
+        editedTask.extractTags();
+        editedTask.addTags(taskTags.value);
         tasksList.editTask(taskId, editedTask);
+        console.log(tasksList);
     }
     updateHtml(tasksList);
     modalTasks.hide();

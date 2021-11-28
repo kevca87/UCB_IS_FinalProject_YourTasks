@@ -360,3 +360,16 @@ describe("Search task from a list by tags", () => {
     expect(tasks.getTasksNamesList()).toEqual(["Entrada1", "Entrada2"]);
   });
 });
+
+describe("addTags debe: ", () => {
+  it("Agregar los tags especificados en una string a la lista de tags", () => {
+    var task1Name = "Task1";
+    var task1Desc =  'Esta es una descripcion de ejemplo #gym para probar si extrae las tags #lol';
+    var task1Date = "1995-02-11";
+    var task = new Task(1,task1Name,task1Desc,null,task1Date);
+    task.extractTags();
+    task.addTags('#tagFromAddTags #iLoveCode');
+    expect(task.getTagsStr()).toEqual('#gym #lol #tagFromAddTags #iLoveCode');
+  });
+});
+

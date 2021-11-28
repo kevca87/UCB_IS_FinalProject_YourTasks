@@ -30,6 +30,7 @@ class Task {
         this.deadline = newTask.deadline;
         this.category = newTask.category;
         this.isComplete = newTask.isComplete;
+        this.tags = newTask.tags;
     }
     getDescription(){
         return this.description;
@@ -52,10 +53,14 @@ class Task {
         return this.tags;
     }
     getTagsStr(){
-        return this.tags.join(' ')
+        return this.tags.join(' ');
     }
     getCategory(){
         return this.category;
+    }
+    addTags(strOfTags){
+        this.tags = getTags(this.getTagsStr()+' '+strOfTags);
+        //To keep description tags functionalitie
     }
 }
 

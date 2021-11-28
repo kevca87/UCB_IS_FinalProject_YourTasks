@@ -31,6 +31,20 @@ class TasksList {
         return nextId;
     }
 
+    //js no soporta sobrecarga de metodos, not change to add.
+    addTask(newTask){
+        var newTaskName = newTask.getName();
+        let sentenceExpression = new RegExp('\\w+');
+        var hasNotOnlySpaces = newTaskName.match(sentenceExpression) != null;
+        var nameNotEmpty = newTaskName !="";
+        var id = this.getNextId();
+        if(hasNotOnlySpaces && nameNotEmpty)
+        {
+            newTask['id'] = id;
+            this.tasksList.push(newTask);
+        }
+    }
+
     add(newTaskName, description,category,deadline,isComplete){
         let sentenceExpression = new RegExp('\\w+');
         var hasNotOnlySpaces = newTaskName.match(sentenceExpression) != null;
@@ -102,7 +116,6 @@ class TasksList {
         if (taskToEdit!=null)
         {
             taskToEdit.set(modifiedTask);
-            taskToEdit.extractTags();
         }
     }
     searchByCategory(category){
