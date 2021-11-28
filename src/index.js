@@ -105,7 +105,6 @@ formTasks.addEventListener("submit",event=>{
     }
     updateHtml(tasksList);
     modalTasks.hide();
-    logo.textContent = "Whats up";
 })
 
 
