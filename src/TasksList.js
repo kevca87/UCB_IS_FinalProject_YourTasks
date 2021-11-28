@@ -4,6 +4,7 @@ class TasksList {
 
     constructor() {
       this.tasksList = [];
+     
     }
 
     getTasksList()
@@ -30,14 +31,28 @@ class TasksList {
         return nextId;
     }
 
-    add(newTaskName, description,category,deadline){
+    //js no soporta sobrecarga de metodos, not change to add.
+    addTask(newTask){
+        var newTaskName = newTask.getName();
         let sentenceExpression = new RegExp('\\w+');
         var hasNotOnlySpaces = newTaskName.match(sentenceExpression) != null;
         var nameNotEmpty = newTaskName !="";
         var id = this.getNextId();
         if(hasNotOnlySpaces && nameNotEmpty)
         {
-            var newTask = new Task(id,newTaskName,description,category,deadline);
+            newTask['id'] = id;
+            this.tasksList.push(newTask);
+        }
+    }
+
+    add(newTaskName, description,category,deadline,isComplete){
+        let sentenceExpression = new RegExp('\\w+');
+        var hasNotOnlySpaces = newTaskName.match(sentenceExpression) != null;
+        var nameNotEmpty = newTaskName !="";
+        var id = this.getNextId();
+        if(hasNotOnlySpaces && nameNotEmpty)
+        {
+            var newTask = new Task(id,newTaskName,description,category,deadline,isComplete);
             newTask.extractTags();
             this.tasksList.push(newTask);
         }
@@ -63,6 +78,15 @@ class TasksList {
 		    if(matchDescription.test(taskDescription)) matchedTasks.addExistingTask(this.tasksList[i]);
 	    }
 	    return matchedTasks;
+    }
+
+    searchByTag(tag){
+        var matchedTasks = new TasksList();
+        for(var i=0; i<this.tasksList.length; i++){
+            var taskTags = this.tasksList[i].getTags();
+            if(taskTags.includes(tag)) matchedTasks.addExistingTask(this.tasksList[i]);
+        }
+        return matchedTasks
     }
 
     removeTask(taskId){
@@ -92,7 +116,6 @@ class TasksList {
         if (taskToEdit!=null)
         {
             taskToEdit.set(modifiedTask);
-            taskToEdit.extractTags();
         }
     }
     searchByCategory(category){
@@ -101,6 +124,23 @@ class TasksList {
 		    if(this.tasksList[i].getCategory() == category) matchedTasks.addExistingTask(this.tasksList[i]);
         }
         return matchedTasks;
+    }
+    CompleteTask(taskId,isChecked){
+        /*var status;
+        if(isChecked===true){
+            status=true;
+        }else if(isChecked===false){
+            status=false;
+        }*/
+        let statusTask = new Task(taskId,null,null,null,null,isChecked);
+        this.editTask(taskId,statusTask);
+    }
+
+    getTasksListIncompletes()
+    {
+        var tasksListIncompletes = [];
+        tasksListIncompletes = this.tasksList.filter(function(Task){return Task.isComplete === false})
+        return tasksListIncompletes;
     }
 };
 export {TasksList as TasksList}
