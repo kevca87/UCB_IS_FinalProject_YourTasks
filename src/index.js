@@ -24,6 +24,7 @@ const taskTags = document.getElementById('task-tags-input');
 
 const searchForm = document.getElementById('search-form');
 const categoryInput = document.getElementById('category-input');
+const deadlineInput = document.getElementById('deadline-input');
 const buttonEdit = document.getElementById('edit-task');
 const btnSave = document.getElementById('btnSave');
 
@@ -57,9 +58,10 @@ function clearInputValues(){
 searchForm.addEventListener('submit', (event) => {
     event.preventDefault();
     var matchingTasks = tasksList;
-    console.log('search: ' + '"' + searchInput.value + '"' + ', category: ' + '"' + categoryInput.value + '"');
-    if(searchInput.value != "") matchingTasks = tasksList.filterByDescription(searchInput.value);
-    if(categoryInput.value != 'All') matchingTasks = matchingTasks.filterByCategory(categoryInput.value);
+    console.log('search: ' + '"' + searchInput.value + '"' + ', category: ' + '"' + categoryInput.value + '"' + ', deadline: ' + '"' + deadlineInput.value + '"');
+    if(searchInput.value != "") matchingTasks = matchingTasks.searchByDescription(searchInput.value);
+    if(categoryInput.value != 'All') matchingTasks = matchingTasks.searchByCategory(categoryInput.value);
+    matchingTasks = matchingTasks.searchByDeadline(deadlineInput.value);
     if(matchingTasks.getTasksList().length == 0) taskListOutput.innerHTML =  "No se encontraron coincidencias";
     else updateHtml(matchingTasks);
 })

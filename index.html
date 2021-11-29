@@ -43,6 +43,39 @@
         </div>
 
         <section>
+            <!--Search bar for description or tags-->
+            
+            <div class="col-12 col-md-10 col-lg-8">
+                <form class="card card-sm" id="search-form" style="width: 900px;">
+                    <div class="card-body row no-gutters align-items-center">
+                        <div class="col-auto">
+                            <ion-icon name="search"></ion-icon>
+                        </div>
+                        <!--end of col-->
+                        <div class="col-4">
+                            <input class="form-control form-control-borderless" id="search-input" type="search" placeholder="Search by description or tag">
+                        </div>
+                        <!--end of col-->
+                        <div class="col-auto">
+                            <select class="form-control form-control-select" id="category-input">
+                                <option value="All">All</option>
+                                <option value="University">University</option>
+                                <option value="Personal">Personal</option>
+                            </select>
+                        </div>
+                        <!--end of col-->
+                        <div class="col-auto">
+                            <input type="date" class="form-control form-control-date" id="deadline-input">
+                        </div>
+                        <!--end of col-->
+                        <div class="col-auto">
+                            <button class="btn btn-primary" id="btnSearch" type="submit">Search</button>
+                        </div>
+                        <!--end of col-->
+                    </div>
+                </form>
+            </div>
+            
 
             <form id="formTasks">
                                     

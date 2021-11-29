@@ -149,9 +149,9 @@ class TasksList {
     searchByDeadline(deadline){
         var matchedTasks = new TasksList();
         for(var i = 0; i < this.tasksList.length; i++){
-		    if(this.tasksList[i].getDeadline() == deadline) matchedTasks.addExistingTask(this.tasksList[i]);
+		    if(this.tasksList[i].getOnlyTheDate() == deadline) matchedTasks.addExistingTask(this.tasksList[i]);
         }
         return matchedTasks;
-    }
+    } 
 };
 export {TasksList as TasksList}

@@ -62,6 +62,11 @@ class Task {
         this.tags = getTags(this.getTagsStr()+' '+strOfTags);
         //To keep description tags functionalitie
     }
+    getOnlyTheDate(){
+        var matchArray = this.deadline.match(/^(\d*\-\d*\-\d*)([a-zA-Z])(\d*)(\:)(\d*)$/);
+        var date = matchArray[1];
+        return date;
+    }
 }
 
 export {Task,getTags}
