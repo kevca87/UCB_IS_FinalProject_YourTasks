@@ -298,7 +298,7 @@ describe("Get categorie from a task.", () => {
   });
 });
 
-describe("Search task from a list by desciption", () => {
+describe("Search task from a list by category", () => {
   var toDoList = new TasksList();
   toDoList.add("Entrada1", "", "Cat1", "");
   toDoList.add("Entrada2", "", "Cat2", "");
@@ -435,5 +435,23 @@ describe("filterByName debe: ", () => {
   it("Devolver una lista vacia de task (no hay ni una coincidencia)", () => {
     matchedTaskList = taskList.filterByName('e');
     expect(matchedTaskList.getTasksList()).toEqual([]);
+  });
+});
+
+describe("Get deadline from a task: ", () =>{
+  var task = new Task();
+  var newTask;
+  it("Deberia devolver undefinea", () => {
+    expect(task.getDeadline()).toEqual();
+  });
+  it("Deberia devolver 29/11/2021", () => {
+    newTask = new Task(1, "Entrada1", "", "", "29/11/2021");
+    task.set(newTask);
+    expect(task.getDeadline()).toEqual("29/11/2021");
+  });
+  it("Deberia devolver 29/11/2020", () => {
+    newTask = new Task(1, "Entrada2", "", "", "29/11/2020");
+    task.set(newTask);
+    expect(task.getDeadline()).toEqual("29/11/2020");
   });
 });
