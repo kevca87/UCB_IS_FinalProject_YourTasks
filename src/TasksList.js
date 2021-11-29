@@ -13,12 +13,7 @@ class TasksList {
     }
 
     getTasksNamesList() {
-        //var taskNamesLists = this.tasksList.map(x => {return x.getName();});
-        var taskNamesLists = [];
-        for(var i=0; i<this.tasksList.length; i=i+1)
-        {
-            taskNamesLists.push(this.tasksList[i].getName());
-        }
+        var taskNamesLists = this.tasksList.map( (t) => {return t.getName();});
         return taskNamesLists;
     }
 
@@ -58,50 +53,6 @@ class TasksList {
         }
     }
 
-    addExistingTask(task){
-        this.tasksList.push(task);
-    }
-
-    filterTasksBy(taskFieldToMatch,pattern){
-        let patternRegExp = new RegExp(pattern, "i");
-        var matchedTasks = new TasksList();
-        for(var i=0; i<this.tasksList.length; i++)
-	    {
-            var taskField = this.tasksList[i][taskFieldToMatch];
-		    if(patternRegExp.test(taskField)) {
-                matchedTasks.addTask(this.tasksList[i]);
-            }
-	    }
-	    return matchedTasks;
-    }
-
-    //suggar syntax, not test neccesary
-    filterByName(taskNamePattern){
-        var matchedTasks = this.filterTasksBy("name",taskNamePattern);
-	    return matchedTasks;
-    }
-
-    searchByName(name){
-	    for(var i=0; i<this.tasksList.length; i++)
-	    {
-		    if(this.tasksList[i].getName() == name) return this.tasksList[i];
-	    }
-	    return;
-    }
-    searchByDescription(description){
-        var matchedTasks = this.filterTasksBy("description",description);
-	    return matchedTasks;
-    }
-
-    searchByTag(tag){
-        var matchedTasks = new TasksList();
-        for(var i=0; i<this.tasksList.length; i++){
-            var taskTags = this.tasksList[i].getTags();
-            if(taskTags.includes(tag)) matchedTasks.addExistingTask(this.tasksList[i]);
-        }
-        return matchedTasks
-    }
-
     removeTask(taskId){
         for(var i =0; i < this.tasksList.length; i++) {
             if(this.tasksList[i].hasSameId(taskId)) {
@@ -131,13 +82,52 @@ class TasksList {
             taskToEdit.set(modifiedTask);
         }
     }
-    searchByCategory(category){
-        var matchedTasks = new TasksList();
-        for(var i = 0; i < this.tasksList.length; i++){
-		    if(this.tasksList[i].getCategory() == category) matchedTasks.addExistingTask(this.tasksList[i]);
-        }
-        return matchedTasks;
+
+    filter(conditionLambda){
+        var filteredTaskList = new TasksList();
+        filteredTaskList.tasksList = this.tasksList.filter(conditionLambda);
+        return filteredTaskList;
     }
+
+    filterTasksBy(taskFieldToMatch,pattern){
+        let patternRegExp = new RegExp(pattern, "i");
+        var matchedTasks = new TasksList();
+        matchedTasks = this.filter((t)=>patternRegExp.test(t[taskFieldToMatch]));
+	    return matchedTasks;
+    }
+
+    //suggar syntax, not test neccesary
+    filterByName(taskNamePattern){
+        var matchedTasks = this.filterTasksBy("name",taskNamePattern);
+	    return matchedTasks;
+    }
+
+    filterByDescription(description){
+        var matchedTasks = this.filterTasksBy("description",description);
+	    return matchedTasks;
+    }
+
+    filterByTag(tag){
+        let patternRegExp = new RegExp(tag, "i");
+        var matchedTasks = this.filter((t)=>{
+            return patternRegExp.test(t.getTagsStr());
+        });
+	    return matchedTasks;
+    }
+
+    filterByCategory(category){
+        var matchedTasks = this.filterTasksBy("category",category);
+	    return matchedTasks;
+    }
+
+    searchByName(name){
+	    for(var i=0; i<this.tasksList.length; i++)
+	    {
+		    if(this.tasksList[i].getName() == name) return this.tasksList[i];
+	    }
+	    return;
+    }
+
     CompleteTask(taskId,isChecked){
         /*var status;
         if(isChecked===true){

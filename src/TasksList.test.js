@@ -92,24 +92,24 @@ describe("Search task from a list by desciption", () => {
   
   var task;
   it("Deberia devolver una lista vacia", () => {
-    var emptyTaskList = toDoList.searchByDescription("no coincide")
+    var emptyTaskList = toDoList.filterByDescription("no coincide")
     expect(emptyTaskList.getTasksList()).toEqual([]);
   });
   it("Deberia devolver Entrada1", () => {
-    task = toDoList.searchByDescription("Descripcion 1")
+    task = toDoList.filterByDescription("Descripcion 1")
     expect(task.getTasksList()[0].getName()).toEqual("Entrada1");
   });
   it("Deberia devolver Entrada3", () => {
-    task = toDoList.searchByDescription("Descripcion 3")
+    task = toDoList.filterByDescription("Descripcion 3")
     expect(task.getTasksList()[0].getName()).toEqual("Entrada3");
    });
    it("Deberia devolver Entrada1, Entrada2, Entrada3", () => {
-    task = toDoList.searchByDescription("Descr")
+    task = toDoList.filterByDescription("Descr")
     var taskNamesLists = task.getTasksList().map(x =>  x.getName());
     expect(taskNamesLists).toEqual(["Entrada1", "Entrada2", "Entrada3"]);
    });
    it("Deberia devolver Entrada1, Entrada2, Entrada3 no siendo case sensitive", () => {
-    task = toDoList.searchByDescription("descr")
+    task = toDoList.filterByDescription("descr")
     var taskNamesLists = task.getTasksList().map(x =>  x.getName());
     expect(taskNamesLists).toEqual(["Entrada1", "Entrada2", "Entrada3"]);
    });
@@ -306,19 +306,19 @@ describe("Search task from a list by desciption", () => {
   toDoList.add("Entrada4", "", "Cat3", "");
   var tasks; 
   it("Deberia devolver undefine", () => {
-    tasks = toDoList.searchByCategory("h");
+    tasks = toDoList.filterByCategory("h");
     expect(tasks.getTasksNamesList()).toEqual([]);
   });
   it("Deberia devolver Entrada1", () => {
-    tasks = toDoList.searchByCategory("Cat1");
+    tasks = toDoList.filterByCategory("Cat1");
     expect(tasks.getTasksNamesList()).toEqual(["Entrada1"]);
   });
   it("Deberia devolver la tareas que coincidan con la categoria", () => {
-    tasks = toDoList.searchByCategory("Cat2");
+    tasks = toDoList.filterByCategory("Cat2");
     expect(tasks.getTasksNamesList()).toEqual(["Entrada2"]);
   });
   it("Deberia devolver la tareas que coincidan con la categoria", () => {
-    tasks = toDoList.searchByCategory("Cat3");
+    tasks = toDoList.filterByCategory("Cat3");
     expect(tasks.getTasksNamesList()).toEqual(["Entrada3", "Entrada4"]);
   });
 });
@@ -344,19 +344,19 @@ describe("Search task from a list by tags", () => {
   toDoList.add("Entrada4", "desc 1 #tag3", "", "");
   var tasks; 
   it("Deberia devolver una lista vacia", () => {
-    tasks = toDoList.searchByTag("#notatag");
+    tasks = toDoList.filterByTag("#notatag");
     expect(tasks.getTasksNamesList()).toEqual([]);
   });
   it("Deberia devolver Entrada2", () => {
-    tasks = toDoList.searchByTag("#tag2");
+    tasks = toDoList.filterByTag("#tag2");
     expect(tasks.getTasksNamesList()).toEqual(["Entrada3"]);
   });
   it("Deberia devolver la tareas que coincidan con la etiqueta", () => {
-    tasks = toDoList.searchByTag("#tag3");
+    tasks = toDoList.filterByTag("#tag3");
     expect(tasks.getTasksNamesList()).toEqual(["Entrada4"]);
   });
   it("Deberia devolver la tareas que coincidan con la etiqueta", () => {
-    tasks = toDoList.searchByTag("#tag1");
+    tasks = toDoList.filterByTag("#tag1");
     expect(tasks.getTasksNamesList()).toEqual(["Entrada1", "Entrada2"]);
   });
 });

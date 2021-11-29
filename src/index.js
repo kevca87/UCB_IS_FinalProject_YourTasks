@@ -57,8 +57,8 @@ searchForm.addEventListener('submit', (event) => {
     event.preventDefault();
     var matchingTasks = tasksList;
     console.log('search: ' + '"' + searchInput.value + '"' + ', category: ' + '"' + categoryInput.value + '"');
-    if(searchInput.value != "") matchingTasks = tasksList.searchByDescription(searchInput.value);
-    if(categoryInput.value != 'All') matchingTasks = matchingTasks.searchByCategory(categoryInput.value);
+    if(searchInput.value != "") matchingTasks = tasksList.filterByDescription(searchInput.value);
+    if(categoryInput.value != 'All') matchingTasks = matchingTasks.filterByCategory(categoryInput.value);
     if(matchingTasks.getTasksList().length == 0) taskListOutput.innerHTML =  "No se encontraron coincidencias";
     else updateHtml(matchingTasks);
 })

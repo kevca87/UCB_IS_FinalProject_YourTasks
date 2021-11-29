@@ -42,9 +42,9 @@ class Task {
     getDeadline(){
         return this.deadline;
     }
-    getTags(){
+    /*getTags(){
         return this.tags;
-    }
+    }*/
     extractTags(){
         var isDescriptionSet = this.description != undefined || this.description != null;
         if(isDescriptionSet){
