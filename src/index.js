@@ -52,6 +52,7 @@ function clearInputValues(){
     taskTags.value = '';
     taskCategory.value = '';
 }
+
 //Search task by descriptions or tags
 searchForm.addEventListener('submit', (event) => {
     event.preventDefault();
