@@ -137,3 +137,50 @@ describe("Al ingresar una cadena en la barra de busqueda por nombre y presionar 
   });
   */
 });
+
+describe("Al ingresar una cadena en la barra de busqueda por descripcion o tag y presionar en buscar deberia: ", () => {
+  
+  it("Mostrar unicamente las tareas que contengan alguna parte de la descripcion buscada", () => {
+    const btnSearch = document.getElementById('btnSearch');
+    const searchInput = document.getElementById('search-input');
+    
+    var task1 = {"name":"Aprobar Redes","description":"Hacer el VPN y resolver el problema de NAT"};
+    createTask(task1);
+
+    var task2 = {"name":"Ir de vacaciones","description":"Voy a necesitar vacaciones"};
+    createTask(task2);
+
+    var task3 = {"name":"Terminar el proyecto de Ing. de Soft","description":"Hacer las pruebas de interfaz"};
+    createTask(task3);
+
+    searchInput.value = 'hacer';
+
+    btnSearch.click();
+
+    var tasks = document.querySelectorAll('.accordion-button')
+    expect(tasks.length).toEqual(2);
+
+  });
+
+  it("Mostrar unicamente las tareas que contengan el tag a buscar", () => {
+    const btnSearch = document.getElementById('btnSearch');
+    const searchInput = document.getElementById('search-input');
+    
+    var task1 = {"name":"Aprobar Redes","description":"Hacer el VPN y resolver el problema de NAT #importante #RIP"};
+    createTask(task1);
+
+    var task2 = {"name":"Ir de vacaciones","description":"Voy a necesitar vacaciones #descanso"};
+    createTask(task2);
+
+    var task3 = {"name":"Terminar el proyecto de Ing. de Soft","description":"Hacer las pruebas de interfaz #importante"};
+    createTask(task3);
+
+    searchInput.value = '#importante';
+
+    btnSearch.click();
+
+    var tasks = document.querySelectorAll('.accordion-button')
+    expect(tasks.length).toEqual(2);
+
+  });
+});
