@@ -147,9 +147,11 @@ class TasksList {
     }
 
     searchByDeadline(deadline){
-        var output;
-        if(deadline) output = "Entrada1" 
-        return output;
+        var matchedTasks = new TasksList();
+        for(var i = 0; i < this.tasksList.length; i++){
+		    if(this.tasksList[i].getDeadline() == deadline) matchedTasks.addExistingTask(this.tasksList[i]);
+        }
+        return matchedTasks;
     }
 };
 export {TasksList as TasksList}
