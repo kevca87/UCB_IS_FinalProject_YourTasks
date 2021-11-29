@@ -146,8 +146,10 @@ class TasksList {
         return tasksListIncompletes;
     }
 
-    searchByDeadline(){
-        return;
+    searchByDeadline(deadline){
+        var output;
+        if(deadline) output = "Entrada1" 
+        return output;
     }
 };
 export {TasksList as TasksList}

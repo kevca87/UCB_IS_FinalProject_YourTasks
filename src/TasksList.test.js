@@ -456,9 +456,12 @@ describe("Get deadline from a task: ", () =>{
   });
 });
 
-describe("Search task from a list by category", () => {
+describe("Search task from a list by deadline", () => {
   var toDoList = new TasksList();
   it("Deberia devolver undefine", () => {
     expect(toDoList.searchByDeadline()).toEqual();
+  });
+  it("Deberia devolver Entrada1", () => {
+    expect(toDoList.searchByDeadline("29/11/2021")).toEqual("Entrada1");
   });
 });
