@@ -1,12 +1,11 @@
 import { Task } from './Task.js';
 import { TasksList } from './TasksList.js';
 const bootstrap = require('bootstrap');
-const modalTasks = new bootstrap.Modal(document.getElementById('modalTasks'));
+//
 
 
 const taskListOutput = document.querySelector("#final-list-output");
 
-//var wrapper = document.getElementById('final-list-output');
 var wrapper = document.querySelector('#final-list-output');
 //console.log('wrapper: ',wrapper);
 
@@ -25,21 +24,21 @@ const taskTags = document.getElementById('task-tags-input');
 
 const searchForm = document.getElementById('search-form');
 const categoryInput = document.getElementById('category-input');
+const buttonEdit = document.getElementById('edit-task');
+const btnSave = document.getElementById('btnSave');
 
 var tasksList = new TasksList();
 
 let option="";
 
-//Open the modal for creating a task
-btnCreateTask.addEventListener('click', () => {
-    taskName.value = ''
-    taskDescription.value = ''
-    taskDeadline.value=''
-    taskTags.value=''
-    modalTasks.show()
-    option = "create";
-})
 
+function clearInputValues(){
+    taskName.value = '';
+    taskDescription.value = '';
+    taskDeadline.value = '';
+    taskTags.value = '';
+    taskCategory.value = '';
+}
 //Search task by descriptions or tags
 searchForm.addEventListener('submit', (event) => {
     event.preventDefault();
@@ -59,6 +58,14 @@ searchForm.addEventListener('submit', (event) => {
 
 let taskId;
 
+function fillTaskForm(task){
+    taskName.value = task.getName();
+    taskDescription.value = task.getDescription();
+    taskDeadline.value=task.getDeadline();
+    taskTags.value = task.getTagsStr();
+    taskCategory.value = task["category"];
+}
+
 wrapper.addEventListener('click', (event) => {
     const isButton = event.target.nodeName === 'BUTTON';
     if (!isButton) {
@@ -73,12 +80,11 @@ wrapper.addEventListener('click', (event) => {
     if(isEdit){
         taskId = buttonId.split(regExpEdit)[1];
         var task = tasksList.getTask(taskId);
-        taskName.value = task.getName();
-        taskDescription.value = task.getDescription();
-        taskDeadline.value=task.getDeadline();
-        taskCategory.value = task["category"];
-        option = "edit";
-        modalTasks.show();
+        fillTaskForm(task);
+        buttonEdit.disabled = false;
+        btnSave.disabled = true;
+        buttonEdit.setAttribute("data-task-id",taskId);
+        console.log(buttonEdit);
     }
     else if(isDelete){
         taskId= parseInt(buttonId.split(regExpDelete)[1]);
@@ -89,24 +95,25 @@ wrapper.addEventListener('click', (event) => {
 
 formTasks.addEventListener("submit",event=>{
     event.preventDefault();
-    if(option=="create"){
-        var task = new Task(null,taskName.value,taskDescription.value,taskCategory.value,taskDeadline.value);
-        task.extractTags();
-        task.addTags(taskTags.value);
-        tasksList.addTask(task);
-        //tasksList.add(taskName.value, taskDescription.value,taskCategory.value,taskDeadline.value);
-    }
-    else if(option == "edit"){
-        var editedTask = new Task(null,taskName.value, taskDescription.value,taskCategory.value,taskDeadline.value)
-        editedTask.extractTags();
-        editedTask.addTags(taskTags.value);
-        tasksList.editTask(taskId, editedTask);
-        console.log(tasksList);
-    }
+    var task = new Task(null,taskName.value,taskDescription.value,taskCategory.value,taskDeadline.value);
+    task.extractTags();
+    task.addTags(taskTags.value);
+    tasksList.addTask(task);
     updateHtml(tasksList);
-    modalTasks.hide();
+    clearInputValues();
 })
 
+buttonEdit.addEventListener("click",()=>{
+    var taskId = buttonEdit.getAttribute("data-task-id");
+    var editedTask = new Task(null,taskName.value, taskDescription.value,taskCategory.value,taskDeadline.value)
+    editedTask.extractTags();
+    editedTask.addTags(taskTags.value);
+    tasksList.editTask(taskId, editedTask);
+    buttonEdit.disabled = true;
+    updateHtml(tasksList);
+    btnSave.disabled = false;
+    clearInputValues();
+});
 
 
 function updateHtml(taskListToShow){

@@ -7,10 +7,8 @@ const { JSDOM } = jsdom;
 function createTask(inputTask){
   const taskName = document.getElementById('task-name-input');
   const taskDescription = document.getElementById('task-description-input');
-  const btnCreateTask = document.getElementById('btnCreateTask');
   const btnSave = document.getElementById('btnSave');
 
-  btnCreateTask.click();
   taskName.value = inputTask.name;
   taskDescription.value = inputTask.description;
 
@@ -66,22 +64,26 @@ describe("Al presionar 'Create task', rellenar el campo 'Task name' y dar click 
 
 function expandTaskAccordion(taskAccordionId){
   document.getElementById('accordion-item-'+taskAccordionId).click();
-  document.getElementById('bttn-edit-'+taskAccordionId).click();
+}
+
+function clickSaveChanges(){
+  const btnSaveChanges = document.getElementById('edit-task');
+  btnSaveChanges.click();
 }
 
 describe("Al presionar 'Edit' se debe: ", () => {
-  
+  var taskRecovered = document.getElementById('task-name-input');
   it("Recuperar los datos correspondientes a esa tarea y mostrarlos", () => {
     expandTaskAccordion(1);
-    var taskNameRecovered = document.getElementById('task-name-input').value;
-    expect(taskNameRecovered).toEqual('Entrada 1');
+    document.getElementById('bttn-edit-'+1).click();
+    expect(taskRecovered.value).toEqual('Entrada 1');
   });
   it("Poder editar los datos recuperados de una tarea especifica", () => {
     document.getElementById('task-name-input').value = 'Entrada 87';
-    const btnSave = document.getElementById('btnSave');
-    btnSave.click();
+
+    clickSaveChanges();
     
-    var taskUpdated = document.getElementById('accordion-item-1').querySelector('.accordion-button').textContent.trim()
+    var taskUpdated = document.getElementById('accordion-item-1').querySelector('.accordion-button').textContent.trim();
     expect(taskUpdated).toEqual('Entrada 87');
   });
 });
