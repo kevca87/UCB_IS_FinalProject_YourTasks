@@ -455,3 +455,10 @@ describe("Get deadline from a task: ", () =>{
     expect(task.getDeadline()).toEqual("29/11/2020");
   });
 });
+
+describe("Search task from a list by category", () => {
+  var toDoList = new TasksList();
+  it("Deberia devolver undefine", () => {
+    expect(toDoList.searchByDeadline()).toEqual();
+  });
+});

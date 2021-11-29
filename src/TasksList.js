@@ -145,5 +145,9 @@ class TasksList {
         tasksListIncompletes = this.tasksList.filter(function(Task){return Task.isComplete === false})
         return tasksListIncompletes;
     }
+
+    searchByDeadline(){
+        return;
+    }
 };
 export {TasksList as TasksList}
