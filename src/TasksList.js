@@ -75,6 +75,12 @@ class TasksList {
 	    return matchedTasks;
     }
 
+    //suggar syntax, not test neccesary
+    filterByName(taskNamePattern){
+        var matchedTasks = this.filterTasksBy("name",taskNamePattern);
+	    return matchedTasks;
+    }
+
     searchByName(name){
 	    for(var i=0; i<this.tasksList.length; i++)
 	    {
@@ -83,13 +89,7 @@ class TasksList {
 	    return;
     }
     searchByDescription(description){
-        let matchDescription = new RegExp(description, "i");
-        var matchedTasks = new TasksList();
-        for(var i=0; i<this.tasksList.length; i++)
-	    {
-            var taskDescription = this.tasksList[i].getDescription();
-		    if(matchDescription.test(taskDescription)) matchedTasks.addExistingTask(this.tasksList[i]);
-	    }
+        var matchedTasks = this.filterTasksBy("description",description);
 	    return matchedTasks;
     }
 

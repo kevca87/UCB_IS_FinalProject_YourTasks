@@ -27,6 +27,19 @@ const categoryInput = document.getElementById('category-input');
 const buttonEdit = document.getElementById('edit-task');
 const btnSave = document.getElementById('btnSave');
 
+const bttnFilterByName = document.getElementById('bttn-search-by-name');
+const searchByNameBar = document.getElementById('search-by-name-bar');
+
+
+function filterTaskByName(){
+    event.preventDefault();
+    var matchingTasks = tasksList;
+    if(searchByNameBar.value != "") matchingTasks = tasksList.filterByName(searchByNameBar.value);
+    if(matchingTasks.getTasksList().length == 0) taskListOutput.innerHTML =  "No se encontraron coincidencias";
+    else updateHtml(matchingTasks);
+}
+bttnFilterByName.addEventListener("click",filterTaskByName);
+
 var tasksList = new TasksList();
 
 let option="";

@@ -106,3 +106,34 @@ describe("Al presionar 'Delete' se debe: ", () => {
   });
   */
 });
+
+describe("Al ingresar una cadena en la barra de busqueda por nombre y presionar en buscar debe: ", () => {
+  
+  it("Mostrar unicamente las tareas que contengan en el nombre la cadena especificada", () => {
+    const bttnFilterByName = document.getElementById('bttn-search-by-name');
+    const searchByNameBar = document.getElementById('search-by-name-bar');
+    
+    var task1 = {"name":"Llegar vivo el semestre","description":"description 2"};
+    createTask(task1);
+
+    var task2 = {"name":"Llegar al gym","description":"description 2"};
+    createTask(task2);
+
+    var task3 = {"name":"Ir al gym","description":"description 2"};
+    createTask(task3);
+
+    searchByNameBar.value = 'gym'
+
+    bttnFilterByName.click();
+
+    var tasks = document.querySelectorAll('.accordion-button')
+    expect(tasks.length).toEqual(2);
+
+  });
+  /*
+  afterEach(() => {
+    const lista_elem = document.querySelector("#lista-tareas");
+    lista_elem.innerHTML = "";
+  });
+  */
+});

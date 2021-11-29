@@ -413,3 +413,27 @@ describe("filterTasksBy debe: ", () => {
   });
 });
 
+describe("filterByName debe: ", () => {
+  var taskList = automaticTaskListGenerator(3);
+  var matchedTaskList;
+  it("Filtrar una lista de tasks segun el 'name' y las expresiones (pattern) buscadas 1", () => {
+    matchedTaskList = taskList.filterByName('1');
+    expect(matchedTaskList.getTasksList()).toEqual([taskList.getTasksList()[0]]);
+  });
+  it("Filtrar una lista de tasks segun el 'name' y las expresiones (pattern) buscadas 2", () => {
+    matchedTaskList = taskList.filterByName('2');
+    expect(matchedTaskList.getTasksList()).toEqual([taskList.getTasksList()[1]]);
+  });
+  it("Devolver todas las task (que tengan 'Task' en el 'name')", () => {
+    matchedTaskList = taskList.filterByName('Task');
+    expect(matchedTaskList.getTasksList()).toEqual(taskList.getTasksList());
+  });
+  it("Devolver una lista on la Task 1", () => {
+    matchedTaskList = taskList.filterByName('Task 1');
+    expect(matchedTaskList.getTasksList()).toEqual([taskList.getTasksList()[0]]);
+  });
+  it("Devolver una lista vacia de task (no hay ni una coincidencia)", () => {
+    matchedTaskList = taskList.filterByName('e');
+    expect(matchedTaskList.getTasksList()).toEqual([]);
+  });
+});

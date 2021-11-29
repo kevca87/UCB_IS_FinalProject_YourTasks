@@ -113,3 +113,8 @@ div.task-description{
     text-decoration:line-through;
     color: rgba(92, 89, 89, 0.445);
 }
+
+.search-bar-container{
+    padding: 10px 0px;
+    margin: 10px 0px;
+}
