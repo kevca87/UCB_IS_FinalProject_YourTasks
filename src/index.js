@@ -78,7 +78,7 @@ wrapper.addEventListener('click', (event) => {
         buttonEdit.disabled = false;
         btnSave.disabled = true;
         buttonEdit.setAttribute("data-task-id",taskId);
-        console.log(buttonEdit);
+        //console.log(buttonEdit);
     }
     else if(isDelete){
         taskId= parseInt(buttonId.split(regExpDelete)[1]);

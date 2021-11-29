@@ -62,6 +62,19 @@ class TasksList {
         this.tasksList.push(task);
     }
 
+    filterTasksBy(taskFieldToMatch,pattern){
+        let patternRegExp = new RegExp(pattern, "i");
+        var matchedTasks = new TasksList();
+        for(var i=0; i<this.tasksList.length; i++)
+	    {
+            var taskField = this.tasksList[i][taskFieldToMatch];
+		    if(patternRegExp.test(taskField)) {
+                matchedTasks.addTask(this.tasksList[i]);
+            }
+	    }
+	    return matchedTasks;
+    }
+
     searchByName(name){
 	    for(var i=0; i<this.tasksList.length; i++)
 	    {

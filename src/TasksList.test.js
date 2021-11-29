@@ -373,3 +373,43 @@ describe("addTags debe: ", () => {
   });
 });
 
+function automaticTaskListGenerator(numberOfTaskToAdd){
+  var i = 0;
+  var taskName = "Task ";
+  var taskDesc =  'Example description ';
+  var taskDate = "1995-02-11";
+  var taskList = new TasksList();
+  var task;
+  while(i<numberOfTaskToAdd){
+    task = new Task(null,taskName+(i+1),taskDesc+(i+1),null,taskDate+(i+1));
+    taskList.addTask(task);
+    i=i+1;
+  }
+  return taskList;
+}
+
+describe("filterTasksBy debe: ", () => {
+  var taskList = automaticTaskListGenerator(3);
+  var matchedTaskList;
+  it("Filtrar una lista de tasks segun el campo especificado y las expresiones (pattern) buscadas 1", () => {
+    matchedTaskList = taskList.filterTasksBy('name','1');
+    expect(matchedTaskList.getTasksList()).toEqual([taskList.getTasksList()[0]]);
+  });
+  it("Filtrar una lista de tasks segun el 'name' y las expresiones (pattern) buscadas 2", () => {
+    matchedTaskList = taskList.filterTasksBy('name','2');
+    expect(matchedTaskList.getTasksList()).toEqual([taskList.getTasksList()[1]]);
+  });
+  it("Filtrar una lista de tasks segun la 'description' y las expresiones (pattern) buscadas 2", () => {
+    matchedTaskList = taskList.filterTasksBy('description','2');
+    expect(matchedTaskList.getTasksList()).toEqual([taskList.getTasksList()[1]]);
+  });
+  it("Devolver todas las task (que tengan 'Task' en el 'name')", () => {
+    matchedTaskList = taskList.filterTasksBy('name','Task');
+    expect(matchedTaskList.getTasksList()).toEqual(taskList.getTasksList());
+  });
+  it("Devolver una lista vacia de task (no hay ni una coincidencia)", () => {
+    matchedTaskList = taskList.filterTasksBy('name','e');
+    expect(matchedTaskList.getTasksList()).toEqual([]);
+  });
+});
+
