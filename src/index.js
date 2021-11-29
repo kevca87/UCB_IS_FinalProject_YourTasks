@@ -42,18 +42,12 @@ function clearInputValues(){
 //Search task by descriptions or tags
 searchForm.addEventListener('submit', (event) => {
     event.preventDefault();
-    if(searchInput.value != ""){
-        if(searchInput.value.startsWith('#')){
-            var matchingTasks = tasksList.searchByTag(searchInput.value);
-        }
-        else{
-            var matchingTasks = tasksList.searchByDescription(searchInput.value);
-        }
-        console.log(searchInput.value);
-        updateHtml(matchingTasks);
-        if(matchingTasks.getTasksList().length == 0) taskListOutput.innerHTML =  "No se encontraron coincidencias";
-    }
-    else updateHtml(tasksList);
+    var matchingTasks = tasksList;
+    console.log('search: ' + '"' + searchInput.value + '"' + ', category: ' + '"' + categoryInput.value + '"');
+    if(searchInput.value != "") matchingTasks = tasksList.searchByDescription(searchInput.value);
+    if(categoryInput.value != 'All') matchingTasks = matchingTasks.searchByCategory(categoryInput.value);
+    if(matchingTasks.getTasksList().length == 0) taskListOutput.innerHTML =  "No se encontraron coincidencias";
+    else updateHtml(matchingTasks);
 })
 
 let taskId;
