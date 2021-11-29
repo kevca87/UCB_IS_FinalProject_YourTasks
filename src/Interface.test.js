@@ -7,10 +7,12 @@ const { JSDOM } = jsdom;
 function createTask(inputTask){
   const taskName = document.getElementById('task-name-input');
   const taskDescription = document.getElementById('task-description-input');
+  const taskDeadline = document.getElementById('task-deadline-input');
   const btnSave = document.getElementById('btnSave');
 
   taskName.value = inputTask.name;
   taskDescription.value = inputTask.description;
+  taskDeadline.value = inputTask.deadline;
 
   btnSave.click();
 }
@@ -144,13 +146,13 @@ describe("Al ingresar una cadena en la barra de busqueda por descripcion o tag y
     const btnSearch = document.getElementById('btnSearch');
     const searchInput = document.getElementById('search-input');
     
-    var task1 = {"name":"Aprobar Redes","description":"Hacer el VPN y resolver el problema de NAT"};
+    var task1 = {"name":"Aprobar Redes","description":"Hacer el VPN y resolver el problema de NAT", "deadline":""};
     createTask(task1);
 
-    var task2 = {"name":"Ir de vacaciones","description":"Voy a necesitar vacaciones"};
+    var task2 = {"name":"Ir de vacaciones","description":"Voy a necesitar vacaciones", "deadline":""};
     createTask(task2);
 
-    var task3 = {"name":"Terminar el proyecto de Ing. de Soft","description":"Hacer las pruebas de interfaz"};
+    var task3 = {"name":"Terminar el proyecto de Ing. de Soft","description":"Hacer las pruebas de interfaz", "deadline":""};
     createTask(task3);
 
     searchInput.value = 'hacer';

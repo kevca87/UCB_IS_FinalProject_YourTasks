@@ -146,10 +146,10 @@ class TasksList {
         return tasksListIncompletes;
     }
 
-    searchByDeadline(deadline){
+    filterByDeadline(deadline){
         var matchedTasks = new TasksList();
         for(var i = 0; i < this.tasksList.length; i++){
-		    if(this.tasksList[i].getOnlyTheDate() == deadline) matchedTasks.addExistingTask(this.tasksList[i]);
+		    if(this.tasksList[i].getOnlyTheDate() == deadline) matchedTasks.addTask(this.tasksList[i]);
         }
         return matchedTasks;
     } 

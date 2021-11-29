@@ -63,8 +63,12 @@ class Task {
         //To keep description tags functionalitie
     }
     getOnlyTheDate(){
+        console.log(this.deadline);
         var matchArray = this.deadline.match(/^(\d*\-\d*\-\d*)([a-zA-Z])(\d*)(\:)(\d*)$/);
-        var date = matchArray[1];
+        console.log(matchArray);
+        var date;
+        if(matchArray != null) date = matchArray[1];
+        else date = "";
         return date;
     }
 }

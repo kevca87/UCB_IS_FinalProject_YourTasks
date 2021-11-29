@@ -464,19 +464,19 @@ describe("Search task from a list by deadline", () => {
   toDoList.add("Entrada4", "", "", "2019-11-29T16:29");
   var tasks; 
   it("Deberia devolver undefine", () => {
-    tasks = toDoList.searchByDeadline("h");
+    tasks = toDoList.filterByDeadline("h");
     expect(tasks.getTasksNamesList()).toEqual([]);
   });
   it("Deberia devolver Entrada1", () => {
-    tasks = toDoList.searchByDeadline("2022-11-29");
+    tasks = toDoList.filterByDeadline("2022-11-29");
     expect(tasks.getTasksNamesList()).toEqual(["Entrada1"]);
   });
   it("Deberia devolver la tareas que coincidan con la categoria", () => {
-    tasks = toDoList.searchByDeadline("2021-11-29");
+    tasks = toDoList.filterByDeadline("2021-11-29");
     expect(tasks.getTasksNamesList()).toEqual(["Entrada2"]);
   });
   it("Deberia devolver la tareas que coincidan con la categoria", () => {
-    tasks = toDoList.searchByDeadline("2019-11-29");
+    tasks = toDoList.filterByDeadline("2019-11-29");
     expect(tasks.getTasksNamesList()).toEqual(["Entrada3", "Entrada4"]);
   });
 });

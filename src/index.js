@@ -59,9 +59,9 @@ searchForm.addEventListener('submit', (event) => {
     event.preventDefault();
     var matchingTasks = tasksList;
     console.log('search: ' + '"' + searchInput.value + '"' + ', category: ' + '"' + categoryInput.value + '"' + ', deadline: ' + '"' + deadlineInput.value + '"');
-    if(searchInput.value != "") matchingTasks = matchingTasks.searchByDescription(searchInput.value);
-    if(categoryInput.value != 'All') matchingTasks = matchingTasks.searchByCategory(categoryInput.value);
-    matchingTasks = matchingTasks.searchByDeadline(deadlineInput.value);
+    if(searchInput.value != "") matchingTasks = matchingTasks.filterByDescription(searchInput.value);
+    if(categoryInput.value != 'All') matchingTasks = matchingTasks.filterByCategory(categoryInput.value);
+    if(deadlineInput.value != null && deadlineInput.value != "") matchingTasks = matchingTasks.filterByDeadline(deadlineInput.value);
     if(matchingTasks.getTasksList().length == 0) taskListOutput.innerHTML =  "No se encontraron coincidencias";
     else updateHtml(matchingTasks);
 })
