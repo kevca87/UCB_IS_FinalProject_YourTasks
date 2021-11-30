@@ -323,7 +323,7 @@ describe("Search task from a list by category", () => {
   });
 });
 
-describe("Debe devolver una lista con las task que aun estan pendientes", () => {
+/*describe("Debe devolver una lista con las task que aun estan pendientes", () => {
   let tasksList = new TasksList();
   it("Devolver una lista con tareas mostrando el estado de las tareas creadas", () => {
     tasksList.add("Task1","Desc 1","Category 1", null);
@@ -334,7 +334,7 @@ describe("Debe devolver una lista con las task que aun estan pendientes", () => 
     tasksList.CompleteTask(2,true);
     expect(tasksList.getTasksListIncompletes()).toEqual([new Task(1,"Task1","Desc 1","Category 1",null,false)]);
   });
-});
+});*/
 
 describe("Search task from a list by tags", () => {
   var toDoList = new TasksList();

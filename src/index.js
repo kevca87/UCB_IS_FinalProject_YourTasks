@@ -1,6 +1,5 @@
 
 
-import { is } from '@babel/types';
 import { Task } from './Task.js';
 import { TasksList } from './TasksList.js';
 //const bootstrap = require('bootstrap');
@@ -109,7 +108,7 @@ wrapper.addEventListener('click', (event) => {
 wrapper.addEventListener('click',(event) => {
     const isCheck = event.target.type === 'checkbox';
     console.log(event.target.checked)
-    valorCheck = event.target.checked;
+    const valorCheck = event.target.checked;
     console.log(valorCheck)
     if(!isCheck){
         return;
