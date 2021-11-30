@@ -151,11 +151,21 @@ function updateHtml(taskListToShow){
     taskListOutput.innerHTML =  taskListHtml;
 }
 
+function markCheckbox(){
+    document.querySelector('input[type="checkbox"]')
+    console.log()
+}
+
 function introduceHtmlForTask(task, iteration){
     wrapper = document.getElementById('final-list-output');
+    var checked = " ";
+    if(task.isComplete == true)
+    {
+        checked = "checked"
+    }
     var htmlListElement = `
     <div id="accordion-item-`+task["id"]+`" class="accordion-item">
-        <input type="checkbox" name="" id="chb-checkbox-`+task["id"]+`" class="hidden-box">
+        <input type="checkbox" name="" id="chb-checkbox-`+task["id"]+`" class="hidden-box" ${checked}>
         <label for="heading` + iteration + `" class="accordion-header check-label" id="heading` + iteration + `">       
             <button class="accordion-button check-label-text collapsed " type="button" data-bs-toggle="collapse" data-bs-target="#collapse` + iteration + `" aria-expanded="false" aria-controls="collapse` + iteration + `">
                 `+ task["name"] +`
