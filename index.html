@@ -18,6 +18,8 @@
     <link rel="stylesheet" href="css/styles.css">
 
     <title>To do List</title>
+
+
 </head>
 
 <body>
@@ -51,8 +53,9 @@
                             <ion-icon name="search"></ion-icon>
                         </div>
                         <!--end of col-->
-                        <div class="col-4 p-0">
-                            <input class="form-control form-control-borderless" id="search-input" type="search" placeholder="Search by description or tag">
+                        <div class="col-3 p-0">
+                            <input class="form-control form-control-borderless" id="search-input" type="search"
+                                placeholder="Search by description or tag">
                         </div>
                         <!--end of col-->
                         <div class="col-auto p-0">
@@ -67,6 +70,13 @@
                             <input type="date" class="form-control form-control-date" id="deadline-input">
                         </div>
                         <!--end of col-->
+                        <div class="col-auto p-0">
+                            <select class="form-control form-control-select" id="complete-input">
+                                <option value="All">All</option>
+                                <option value="false">Incomplete</option>                               
+                            </select>
+                        </div>
+                        <!--end of col-->
                         <div class="col-auto">
                             <button class="btn btn-primary mt-0" id="btnSearch" type="submit">Search</button>
                         </div>
@@ -74,12 +84,14 @@
                     </div>
                 </form>
             </div>
-            
-             <!--Search bar for description or tags-->
+
+            <!--Search bar for description or tags-->
             <div class="search-bar-container">
                 <form action="submit">
-                    <input id='search-by-name-bar' style="border-radius: 15px;" type="text" class="search-bar" placeholder="Name of your task">
-                    <button id="bttn-search-by-name" class="btn btn-primary" style="border-radius: 20px;">Search</button>
+                    <input id='search-by-name-bar' style="border-radius: 15px;" type="text" class="search-bar"
+                        placeholder="Name of your task">
+                    <button id="bttn-search-by-name" class="btn btn-primary"
+                        style="border-radius: 20px;">Search</button>
                 </form>
             </div>
 
@@ -90,7 +102,8 @@
                     </div>`
                     <!--end of col-->
                     <div class="col-6">
-                        <input class="form-control form-control-borderless" id="search-input" type="search" placeholder="Search by description or tag">
+                        <input class="form-control form-control-borderless" id="search-input" type="search"
+                            placeholder="Search by description or tag">
                     </div>
                     <!--end of col-->
                     <div class="col">
@@ -107,11 +120,11 @@
                     <!--end of col-->
                 </div>
             </form>
-            
+
 
             <div id="Lista-de-tareas">
-                <div id="final-list-output" name="final-list-output"> 
-                    
+                <div id="final-list-output" name="final-list-output">
+
                 </div>
             </div>
 
@@ -122,34 +135,32 @@
             <h2>Task</h2>
 
             <form id="formTasks">
-                                    
+
                 <div class="form-group my-1 row">
                     <label for="task-name-input" class="col-form-label py-1 col-sm-4">Task Name</label>
                     <div class="col-sm-8">
                         <input type="text" class="form-control form-control-sm" id="task-name-input">
                     </div>
                 </div>
-                
+
                 <div class="form-group my-1 row">
-                    
-                    <label for="task-description-input"
-                        class="col-form-label pb-0 col-sm-4">Task Description</label>
-                    <div class="col-sm-8" style="height: 90px;">                        
-                        <textarea name="task-description-input" id="task-description-input" cols="24.5" rows="3" style="margin: 0px; height: 100%; width: 230px;"></textarea>
+
+                    <label for="task-description-input" class="col-form-label pb-0 col-sm-4">Task Description</label>
+                    <div class="col-sm-8" style="height: 90px;">
+                        <textarea name="task-description-input" id="task-description-input" cols="24.5" rows="3"
+                            style="margin: 0px; height: 100%; width: 230px;"></textarea>
                     </div>
                 </div>
 
-                <div class="form-group my-1 row">                    
-                    <label for="task-tags-input"
-                        class="col-form-label pb-0 col-sm-4">Tags</label>
+                <div class="form-group my-1 row">
+                    <label for="task-tags-input" class="col-form-label pb-0 col-sm-4">Tags</label>
                     <div class="col-sm-8">
                         <input class="form-control form-control-sm" id="task-tags-input">
                     </div>
                 </div>
-                
+
                 <div class="form-group my-1 row">
-                    <label for="category-select"
-                        class="col-form-label pb-0 col-sm-4">Category: </label>
+                    <label for="category-select" class="col-form-label pb-0 col-sm-4">Category: </label>
                     <div class="col-sm-8">
                         <select id="category-select" class="form-select" aria-label="Default select example">
                             <option selected></option>
@@ -157,7 +168,7 @@
                             <option value="Personal">Personal</option>
                         </select>
                     </div>
-                    
+
                 </div>
                 <div class="form-group my-1 row">
                     <label for="task-deadline-input" class="col-form-label py-1 col-sm-4">Deadline</label>
@@ -165,10 +176,11 @@
                         <input type="datetime-local" class="form-control form-control-sm" id="task-deadline-input">
                     </div>
                 </div>
-                
-                
+
+
                 <div class="modal-footer my-0 py-1">
-                    <button id="edit-task" data-task-id="" type="button" class="btn btn-primary" disabled>Save changes</button>
+                    <button id="edit-task" data-task-id="" type="button" class="btn btn-primary" disabled>Save
+                        changes</button>
                     <button type="submit" id="btnSave" class="btn btn-primary">Add task</button>
                 </div>
             </form>

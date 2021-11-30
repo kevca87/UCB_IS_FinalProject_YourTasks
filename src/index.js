@@ -1,8 +1,10 @@
+
+
+import { is } from '@babel/types';
 import { Task } from './Task.js';
 import { TasksList } from './TasksList.js';
 //const bootstrap = require('bootstrap');
 //
-
 
 const taskListOutput = document.querySelector("#final-list-output");
 
@@ -25,9 +27,9 @@ const taskTags = document.getElementById('task-tags-input');
 const searchForm = document.getElementById('search-form');
 const categoryInput = document.getElementById('category-input');
 const deadlineInput = document.getElementById('deadline-input');
+const completeInput = document.getElementById('complete-input');
 const buttonEdit = document.getElementById('edit-task');
 const btnSave = document.getElementById('btnSave');
-
 const bttnFilterByName = document.getElementById('bttn-search-by-name');
 const searchByNameBar = document.getElementById('search-by-name-bar');
 
@@ -62,6 +64,7 @@ searchForm.addEventListener('submit', (event) => {
     if(searchInput.value != "") matchingTasks = matchingTasks.filterByDescription(searchInput.value);
     if(categoryInput.value != 'All') matchingTasks = matchingTasks.filterByCategory(categoryInput.value);
     if(deadlineInput.value != null && deadlineInput.value != "") matchingTasks = matchingTasks.filterByDeadline(deadlineInput.value);
+    if(completeInput.value != 'All') matchingTasks = matchingTasks.filterByComplete(completeInput.value);
     if(matchingTasks.getTasksList().length == 0) taskListOutput.innerHTML =  "No se encontraron coincidencias";
     else updateHtml(matchingTasks);
 })
@@ -103,6 +106,24 @@ wrapper.addEventListener('click', (event) => {
     }
 })
 
+wrapper.addEventListener('click',(event) => {
+    const isCheck = event.target.type === 'checkbox';
+    console.log(event.target.checked)
+    valorCheck = event.target.checked;
+    console.log(valorCheck)
+    if(!isCheck){
+        return;
+    } else{
+        let checkId = event.target.id;
+        console.log(checkId)
+        let regExpCheck = /-checkbox-/;
+        taskId = checkId.split(regExpCheck)[1];  
+        console.log(taskId)      
+        tasksList.CompleteTask(taskId,valorCheck);
+        console.log(tasksList);
+    }
+})
+
 formTasks.addEventListener("submit",event=>{
     event.preventDefault();
     var task = new Task(null,taskName.value,taskDescription.value,taskCategory.value,taskDeadline.value);
@@ -135,7 +156,7 @@ function introduceHtmlForTask(task, iteration){
     wrapper = document.getElementById('final-list-output');
     var htmlListElement = `
     <div id="accordion-item-`+task["id"]+`" class="accordion-item">
-        <input type="checkbox" name="" id="heading` + iteration + `" class="hidden-box">
+        <input type="checkbox" name="" id="chb-checkbox-`+task["id"]+`" class="hidden-box">
         <label for="heading` + iteration + `" class="accordion-header check-label" id="heading` + iteration + `">       
             <button class="accordion-button check-label-text collapsed " type="button" data-bs-toggle="collapse" data-bs-target="#collapse` + iteration + `" aria-expanded="false" aria-controls="collapse` + iteration + `">
                 `+ task["name"] +`
@@ -164,7 +185,7 @@ function introduceHtmlForTask(task, iteration){
         </div>
     </div>
     `;
-    return htmlListElement;
+    return htmlListElement;    
 }
 
 function getTasksListHtml(tasksList){
@@ -176,3 +197,5 @@ function getTasksListHtml(tasksList){
     });
     return taskListHtml;
 }
+
+

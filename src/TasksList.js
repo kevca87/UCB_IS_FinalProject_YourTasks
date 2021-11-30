@@ -139,11 +139,13 @@ class TasksList {
         this.editTask(taskId,statusTask);
     }
 
-    getTasksListIncompletes()
+    filterByComplete(isComplete)
     {
-        var tasksListIncompletes = [];
+        /*var tasksListIncompletes = [];
         tasksListIncompletes = this.tasksList.filter(function(Task){return Task.isComplete === false})
-        return tasksListIncompletes;
+        return tasksListIncompletes;*/
+        var matchedTasks = this.filterTasksBy("isComplete",isComplete);
+	    return matchedTasks;
     }
 
     filterByDeadline(deadline){
